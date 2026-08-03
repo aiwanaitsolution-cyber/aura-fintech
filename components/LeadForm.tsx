@@ -29,6 +29,7 @@ export function LeadForm({ product = "" }: { product?: string }) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState("");
+  const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hello Aura Fintec Services, I want to continue my ${product || "loan"} inquiry on WhatsApp.`)}`;
   const {
     register,
     handleSubmit,
@@ -150,7 +151,7 @@ export function LeadForm({ product = "" }: { product?: string }) {
             </span>
           </label>
           {errors.consent?.message && <p className="error-text">{errors.consent.message}</p>}
-          <a className="whatsapp-link" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noreferrer">
+          <a className="whatsapp-link" href={whatsappUrl} target="_blank" rel="noreferrer">
             Continue on WhatsApp
           </a>
         </div>

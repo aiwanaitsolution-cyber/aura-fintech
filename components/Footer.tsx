@@ -3,6 +3,8 @@ import Link from "next/link";
 import { calculators, services, site } from "@/lib/client-data";
 
 export function Footer() {
+  const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Aura Fintec Services, I want guidance for a loan or finance requirement.")}`;
+
   return (
     <footer className="site-footer premium-footer">
       <div className="footer-grid">
@@ -45,6 +47,7 @@ export function Footer() {
           <h2>Contact</h2>
           <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
           <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp consultation</a>
           <p>{site.address}</p>
           <Link className="primary-button" href="/apply-now">
             Start Application
@@ -52,7 +55,7 @@ export function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} Aura Fintec Services. All rights reserved.</span>
+        <span>Copyright {new Date().getFullYear()} Aura Fintec Services. All rights reserved.</span>
         <span>
           <Link href="/privacy-policy">Privacy</Link> <Link href="/terms-and-conditions">Terms</Link>{" "}
           <Link href="/disclaimer">Disclaimer</Link> <Link href="/grievance-redressal">Grievance</Link>
