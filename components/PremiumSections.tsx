@@ -357,6 +357,11 @@ export function BlogShowcase() {
       <div className="blog-layout">
         {blogPosts.map((post, index) => (
           <Link className={index === 0 ? "blog-card featured-blog" : "blog-card"} href={`/resources/${post.slug}`} key={post.slug}>
+            {index === 0 && (
+              <video autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-loan-syndication.jpeg" aria-hidden="true">
+                <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
+              </video>
+            )}
             <span>Guide - 4 min read</span>
             <h3>{post.title}</h3>
             <p>{post.excerpt}</p>

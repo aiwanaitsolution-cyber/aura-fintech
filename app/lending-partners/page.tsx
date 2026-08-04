@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { BadgeCheck, Building2, FileSearch, Handshake, Landmark, Network, ShieldCheck, WalletCards } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { partners, site } from "@/lib/client-data";
@@ -20,6 +19,7 @@ const partnerDescriptions = [
   "Teams that review project viability, promoter contribution, collateral and cash-flow assumptions.",
   "Assessment support categories that help organize documents, banking data and risk inputs."
 ];
+const lenderLogoStrip = ["Bank", "NBFC", "Private Credit", "Working Capital", "Asset Finance", "Project Finance", "Credit Desk", "Structured Desk"];
 
 export default function PartnersPage() {
   return (
@@ -37,7 +37,9 @@ export default function PartnersPage() {
             <p>Each category below represents a route Aura can evaluate after reviewing documents, use case, repayment comfort and lender policy.</p>
           </div>
           <div className="lender-image-stage">
-            <Image src="/assets/aura-fintec-profile.jpeg" alt="Aura Fintec Services loan syndication and financial advisory visual" width={1254} height={1254} />
+            <video autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-fintec-profile.jpeg" aria-label="Business meeting video representing lender partner coordination">
+              <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
+            </video>
             <div className="orbit orbit-one">Profile</div>
             <div className="orbit orbit-two">Documents</div>
             <div className="orbit orbit-three">Lender fit</div>
@@ -70,6 +72,13 @@ export default function PartnersPage() {
         <div className="section-inner lender-note">
           <strong>Compliance note</strong>
           <p>{site.unverifiedNote}</p>
+        </div>
+        <div className="section-inner lender-logo-marquee" aria-label="Lender category logo strip">
+          <div>
+            {[...lenderLogoStrip, ...lenderLogoStrip].map((item, index) => (
+              <span key={`${item}-${index}`}>{item}</span>
+            ))}
+          </div>
         </div>
       </section>
     </main>

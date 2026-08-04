@@ -1568,12 +1568,39 @@ blockquote {
 }
 
 .featured-blog {
+  position: relative;
   grid-row: span 2;
   min-height: 360px;
   color: #fff;
+  overflow: hidden;
   background:
     radial-gradient(circle at 85% 16%, rgba(242,140,24,.34), transparent 14rem),
     linear-gradient(135deg, var(--deep), var(--primary));
+}
+
+.featured-blog::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(4,27,56,.94), rgba(4,27,56,.7), rgba(229,106,0,.28)),
+    radial-gradient(circle at 78% 20%, rgba(242,140,24,.22), transparent 14rem);
+  pointer-events: none;
+}
+
+.featured-blog video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .48;
+  filter: saturate(.9) contrast(1.08);
+}
+
+.featured-blog > *:not(video) {
+  position: relative;
+  z-index: 1;
 }
 
 .featured-blog p,
@@ -2031,11 +2058,17 @@ blockquote {
   box-shadow: var(--shadow);
 }
 
-.lender-image-stage img {
+.lender-image-stage img,
+.lender-image-stage video {
   width: 100%;
   height: 100%;
   min-height: inherit;
   object-fit: cover;
+}
+
+.lender-image-stage video {
+  display: block;
+  filter: saturate(.9) contrast(1.08);
 }
 
 .lender-image-stage::after {
@@ -2142,6 +2175,38 @@ blockquote {
   background: #fff;
   border: 1px dashed rgba(8,45,92,.28);
   border-radius: 16px;
+}
+
+.lender-logo-marquee {
+  overflow: hidden;
+  margin-top: 18px;
+  padding: 14px 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 14px 38px rgba(4,27,56,.06);
+}
+
+.lender-logo-marquee div {
+  display: flex;
+  width: max-content;
+  gap: 12px;
+  animation: marquee 30s linear infinite;
+}
+
+.lender-logo-marquee span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  min-height: 54px;
+  color: var(--deep);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(229,106,0,.12), transparent 8rem),
+    linear-gradient(180deg, #fff, var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-weight: 950;
 }
 
 .dark-section {
