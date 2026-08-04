@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { BadgeCheck, BarChart3, Building2, FileSearch, Handshake, Landmark, ShieldCheck } from "lucide-react";
+import { BadgeCheck, BarChart3, Building2, FileSearch, Handshake, Landmark, ShieldCheck, Sparkles, Target, TrendingUp } from "lucide-react";
 import { clientPlaceholders, site } from "@/lib/client-data";
 
 export const metadata: Metadata = {
@@ -24,6 +24,11 @@ export default function FounderPage() {
     { label: "Strategic advisory", Icon: ShieldCheck },
     { label: "Loan syndication", Icon: Handshake }
   ];
+  const founderProof = [
+    { value: "14+ years", label: "Banking and financial services exposure", Icon: TrendingUp },
+    { value: "CA-led", label: "Finance discipline with credit assessment thinking", Icon: BadgeCheck },
+    { value: "Business first", label: "Structured support for MSMEs, startups and corporates", Icon: Target }
+  ];
 
   return (
     <main>
@@ -39,6 +44,21 @@ export default function FounderPage() {
         </div>
       </section>
       <section className="page-content">
+        <div className="section-inner founder-brand-board">
+          <div>
+            <span className="premium-eyebrow"><Sparkles size={16} /> Founder advantage</span>
+            <h2>Why CA Ankita Garg is built for this advisory desk.</h2>
+          </div>
+          <div className="founder-proof-grid">
+            {founderProof.map(({ value, label, Icon }) => (
+              <div key={value}>
+                <Icon size={24} />
+                <strong>{value}</strong>
+                <span>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="section-inner founder-visual-story">
           <article className="founder-manifesto">
             <span className="premium-eyebrow">About the founder</span>

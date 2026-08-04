@@ -1232,7 +1232,6 @@ textarea {
     linear-gradient(180deg, #fff, #f5f8fc 54%, #fff);
 }
 
-.about-visual-grid,
 .founder-visual-story {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, .75fr);
@@ -1240,7 +1239,6 @@ textarea {
   align-items: stretch;
 }
 
-.about-story-card,
 .founder-manifesto {
   padding: clamp(26px, 5vw, 54px);
   background: #fff;
@@ -1249,7 +1247,6 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-.about-story-card h2,
 .founder-manifesto h2 {
   margin: 0 0 14px;
   color: var(--deep);
@@ -1257,7 +1254,6 @@ textarea {
   line-height: 1;
 }
 
-.about-story-card p,
 .founder-manifesto p {
   color: var(--muted);
   font-size: 1.05rem;
@@ -1300,9 +1296,12 @@ textarea {
   line-height: 1.55;
 }
 
-.about-founder-visual {
+.sticky-about-background {
   position: relative;
-  min-height: 560px;
+  position: sticky;
+  top: 104px;
+  min-height: min(720px, calc(100vh - 130px));
+  padding: clamp(24px, 4vw, 46px);
   overflow: hidden;
   color: #fff;
   background: linear-gradient(145deg, var(--deep), var(--primary));
@@ -1310,82 +1309,80 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-.about-founder-visual img,
-.about-founder-visual video {
+.sticky-about-background video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: .42;
+  filter: saturate(.9) contrast(1.08);
 }
 
-.about-video-panel video {
-  display: block;
-  min-height: inherit;
-  filter: saturate(.92) contrast(1.05);
-}
-
-.about-video-panel::after {
+.sticky-about-background::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(4,27,56,.08), rgba(4,27,56,.56)),
-    radial-gradient(circle at 80% 10%, rgba(242,140,24,.18), transparent 16rem);
+    linear-gradient(135deg, rgba(4,27,56,.95), rgba(4,27,56,.72)),
+    radial-gradient(circle at 88% 16%, rgba(242,140,24,.28), transparent 20rem);
   pointer-events: none;
 }
 
-.about-founder-visual > div {
-  position: absolute;
+.about-background-content {
+  position: relative;
   z-index: 1;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
   display: grid;
-  gap: 6px;
-  padding: 18px;
-  background: rgba(4,27,56,.82);
-  border: 1px solid rgba(255,255,255,.16);
-  border-radius: 16px;
-  backdrop-filter: blur(16px);
+  align-content: center;
+  min-height: inherit;
 }
 
-.about-founder-visual span {
-  color: var(--amber);
-  text-transform: uppercase;
-  font-weight: 950;
+.about-background-content h2 {
+  max-width: 780px;
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(2.3rem, 5vw, 5.8rem);
+  line-height: .96;
+}
+
+.about-background-content > p {
+  max-width: 620px;
+  color: rgba(255,255,255,.76);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.sticky-about-background .mission-vision-grid div {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.16);
+  backdrop-filter: blur(14px);
+}
+
+.sticky-about-background .mission-vision-grid strong {
+  color: #fff;
+}
+
+.sticky-about-background .mission-vision-grid span {
+  color: rgba(255,255,255,.72);
 }
 
 .sticky-story-section {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(280px, .8fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(340px, .72fr);
   gap: 26px;
-  margin-top: 34px;
+  margin-top: 0;
   align-items: start;
-}
-
-.sticky-story-image {
-  position: sticky;
-  top: 104px;
-  overflow: hidden;
-  height: min(680px, calc(100vh - 130px));
-  border-radius: 24px;
-  box-shadow: var(--shadow);
-}
-
-.sticky-story-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .story-overlay-stack {
   display: grid;
-  gap: 24px;
-  padding-block: 26px;
+  gap: 28px;
+  padding-block: 28px 80px;
 }
 
 .story-overlay-card {
-  min-height: 260px;
+  min-height: 330px;
   padding: clamp(24px, 5vw, 46px);
   color: #fff;
   background:
@@ -1394,6 +1391,7 @@ textarea {
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 22px;
   box-shadow: var(--shadow);
+  animation: riseIn .55s ease both;
 }
 
 .story-overlay-card span {
@@ -1421,7 +1419,17 @@ textarea {
 }
 
 .service-strip {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  padding-block: 8px;
+}
+
+.service-strip > div {
+  display: flex;
+  width: max-content;
+  gap: 12px;
+  animation: serviceSlide 34s linear infinite;
 }
 
 .service-strip a {
@@ -1429,6 +1437,7 @@ textarea {
   align-items: center;
   gap: 8px;
   min-width: 0;
+  width: 286px;
   padding: 14px;
   color: var(--deep);
   background: #fff;
@@ -1450,6 +1459,61 @@ textarea {
 .founder-journey-map {
   display: grid;
   gap: 14px;
+}
+
+.founder-brand-board {
+  display: grid;
+  grid-template-columns: minmax(0, .86fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 28px;
+  padding: clamp(24px, 5vw, 48px);
+  color: #fff;
+  background:
+    radial-gradient(circle at 92% 10%, rgba(242,140,24,.34), transparent 18rem),
+    linear-gradient(135deg, var(--deep), var(--primary));
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.founder-brand-board h2 {
+  max-width: 760px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.2rem, 5vw, 5.4rem);
+  line-height: .98;
+}
+
+.founder-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.founder-proof-grid div {
+  display: grid;
+  gap: 8px;
+  min-height: 180px;
+  padding: 18px;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 18px;
+  backdrop-filter: blur(16px);
+}
+
+.founder-proof-grid svg {
+  color: var(--amber);
+}
+
+.founder-proof-grid strong {
+  color: #fff;
+  font-size: clamp(1.6rem, 3vw, 2.7rem);
+  line-height: 1;
+}
+
+.founder-proof-grid span {
+  color: rgba(255,255,255,.72);
+  line-height: 1.55;
 }
 
 .journey-node {
@@ -1811,6 +1875,12 @@ blockquote {
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+@keyframes serviceSlide {
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -3146,8 +3216,8 @@ td {
   .service-detail-layout,
   .resource-study-hero,
   .study-layout,
-  .about-visual-grid,
   .founder-visual-story,
+  .founder-brand-board,
   .sticky-story-section,
   .lender-visual-hero,
   .service-overview-hero,
@@ -3186,7 +3256,6 @@ td {
   .service-flow-diagram,
   .study-diagram,
   .study-cards,
-  .service-strip,
   .founder-mini-journey,
   .expertise-board {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3197,13 +3266,13 @@ td {
     display: none;
   }
 
-  .sticky-story-image,
+  .sticky-about-background,
   .service-sticky-aside {
     position: static;
   }
 
-  .sticky-story-image {
-    height: 420px;
+  .sticky-about-background {
+    min-height: auto;
   }
 
   .bento-card,
@@ -3281,9 +3350,9 @@ td {
   .service-flow-diagram,
   .study-diagram,
   .study-cards,
-  .service-strip,
   .founder-mini-journey,
   .expertise-board,
+  .founder-proof-grid,
   .mission-vision-grid,
   .premium-mini-grid,
   .service-showcase-grid,
@@ -3300,8 +3369,8 @@ td {
   }
 
   .lender-image-stage,
-  .about-founder-visual {
-    min-height: 360px;
+  .sticky-about-background {
+    border-radius: 20px;
   }
 
   .story-overlay-card {

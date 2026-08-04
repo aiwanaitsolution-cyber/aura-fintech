@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Eye, Handshake, Target, TrendingUp } from "lucide-react";
 import { clientPlaceholders, services, site } from "@/lib/client-data";
@@ -14,31 +13,22 @@ export default function AboutPage() {
     <main>
       <section className="page-hero"><span className="eyebrow">About Aura</span><h1>Loan syndication services and financial advisory for ambitious businesses.</h1><p>{site.tagline}</p></section>
       <section className="page-content about-experience">
-        <div className="section-inner about-visual-grid">
-          <div className="about-story-card">
-            <span className="premium-eyebrow">What Aura does</span>
-            <h2>Finance made easier to see, prepare and discuss.</h2>
-            <p>Aura turns loan requirements into a clear path: profile, documents, lender fit and next action.</p>
-            <div className="mission-vision-grid">
-              <div><Target size={24} /><strong>Mission</strong><span>Simplify complex finance decisions for businesses and families.</span></div>
-              <div><Eye size={24} /><strong>Vision</strong><span>Help clients grow with disciplined, lender-ready financial choices.</span></div>
-              <div><Handshake size={24} /><strong>Principle</strong><span>Consent-led coordination and transparent lender-policy disclosures.</span></div>
-              <div><TrendingUp size={24} /><strong>Outcome</strong><span>Better prepared conversations before formal lender assessment.</span></div>
-            </div>
-          </div>
-          <div className="about-founder-visual about-video-panel">
+        <div className="section-inner sticky-story-section">
+          <div className="about-story-card sticky-about-background">
             <video autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-loan-syndication.jpeg" aria-label="Business meeting video representing Aura Fintec advisory discussions">
               <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
             </video>
-            <div>
-              <span>Advisory in motion</span>
-              <strong>Business finance discussions made clearer, structured and lender-ready.</strong>
+            <div className="about-background-content">
+              <span className="premium-eyebrow">What Aura does</span>
+              <h2>Finance made easier to see, prepare and discuss.</h2>
+              <p>Aura turns loan requirements into a clear path: profile, documents, lender fit and next action.</p>
+              <div className="mission-vision-grid">
+                <div><Target size={24} /><strong>Mission</strong><span>Simplify complex finance decisions for businesses and families.</span></div>
+                <div><Eye size={24} /><strong>Vision</strong><span>Help clients grow with disciplined, lender-ready financial choices.</span></div>
+                <div><Handshake size={24} /><strong>Principle</strong><span>Consent-led coordination and transparent lender-policy disclosures.</span></div>
+                <div><TrendingUp size={24} /><strong>Outcome</strong><span>Better prepared conversations before formal lender assessment.</span></div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="section-inner sticky-story-section">
-          <div className="sticky-story-image">
-            <Image src="/assets/aura-loan-syndication.jpeg" alt="Aura Fintec Services advisory and loan syndication visual" width={1536} height={1024} />
           </div>
           <div className="story-overlay-stack">
             {[
@@ -55,17 +45,19 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-        <div className="section-inner service-strip">
-          {services.slice(0, 8).map((service) => {
+        <div className="section-inner service-strip" aria-label="Featured loan services">
+          <div>
+          {[...services.slice(0, 8), ...services.slice(0, 8)].map((service, index) => {
             const Icon = service.icon;
             return (
-              <Link key={service.slug} href={`/services/${service.slug}`}>
+              <Link key={`${service.slug}-${index}`} href={`/services/${service.slug}`}>
                 <Icon size={18} />
                 <span>{service.title}</span>
                 <ArrowRight size={14} />
               </Link>
             );
           })}
+          </div>
         </div>
         <div className="section-inner founder-mini-journey">
           {[
