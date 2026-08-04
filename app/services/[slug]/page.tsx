@@ -48,53 +48,50 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
       <section className="page-content">
-        <div className="section-inner grid-2">
-          <article className="page-panel">
+        <div className="section-inner service-detail-layout">
+          <article className="page-panel service-decision-panel">
             <Icon size={38} />
             <div className="service-meta">
               <div><span>Audience</span><strong>{service.audience}</strong></div>
               <div><span>Amount</span><strong>{service.amount}</strong></div>
               <div><span>Tenure</span><strong>{service.tenure}</strong></div>
             </div>
-            <h2>How Aura helps</h2>
-            <p>{service.rate}. Aura helps you understand indicative eligibility, documentation gaps and the next lender-ready steps.</p>
-            <div className="premium-mini-grid">
-              {["Who it suits", "Loan features", "Use cases"].map((heading, index) => (
-                <div className="mini-proof" key={heading}>
-                  <h3>{heading}</h3>
-                  <p>{index === 0 ? service.audience : index === 1 ? service.amount : service.highlights.join(", ")}</p>
+            <div className="service-flow-diagram" aria-label="Service decision flow">
+              {[
+                ["Profile", service.audience],
+                ["Documents", `${service.documents.length} groups`],
+                ["Structure", service.tenure],
+                ["Next step", "Apply with consent"]
+              ].map(([label, value], index) => (
+                <div key={label}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{label}</strong>
+                  <small>{value}</small>
                 </div>
               ))}
             </div>
-            <div className="grid-2">
-              <div>
+            <div className="service-visual-columns">
+              <div className="visual-list-card">
                 <h3>Highlights</h3>
-                <ul>{service.highlights.map((item) => <li key={item}>{item}</li>)}</ul>
+                {service.highlights.map((item) => <p key={item}><span />{item}</p>)}
               </div>
-              <div>
-                <h3>Documents generally required</h3>
-                <ul>{service.documents.map((item) => <li key={item}>{item}</li>)}</ul>
+              <div className="visual-list-card">
+                <h3>Documents</h3>
+                {service.documents.map((item) => <p key={item}><span />{item}</p>)}
               </div>
             </div>
-            <h2>Application process</h2>
-            <ol>
-              <li>Share your requirement and basic profile with consent.</li>
-              <li>Review indicative EMI, FOIR and document readiness.</li>
-              <li>Match the case to suitable lender categories where applicable.</li>
-              <li>Proceed only after lender terms, charges and disclosures are clear.</li>
-            </ol>
             <p className="disclaimer">
               Aura Fintec Services acts as a facilitator or DSA where applicable and is not itself the lender. Approval is subject to lender policies, eligibility, documentation, credit assessment and terms.
             </p>
             <FAQ items={service.faqs} />
           </article>
-          <aside>
+          <aside className="service-sticky-aside">
             <LeadForm product={service.title} />
             <div className="card" style={{ marginTop: 18 }}>
               <h3>Useful tools</h3>
-              <Link href="/calculators/emi-calculator">EMI Calculator</Link>
-              <Link href="/calculators/loan-eligibility-calculator">Eligibility Calculator</Link>
-              <Link href="/calculators/balance-transfer-calculator">Balance Transfer Calculator</Link>
+              <Link className="blue-action small-action" href="/calculators/emi-calculator">EMI Calculator</Link>
+              <Link className="blue-action small-action" href="/calculators/loan-eligibility-calculator">Eligibility Calculator</Link>
+              <Link className="blue-action small-action" href="/calculators/balance-transfer-calculator">Balance Transfer</Link>
               <p className="fineprint">{site.unverifiedNote}</p>
             </div>
           </aside>

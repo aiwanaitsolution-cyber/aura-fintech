@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { BadgeCheck, Building2, FileSearch, Handshake, Landmark, Network, ShieldCheck, WalletCards } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { partners, site } from "@/lib/client-data";
@@ -29,6 +30,19 @@ export default function PartnersPage() {
         <p>Aura presents lender categories only. Official institution names and logos should be added after relationship confirmation and usage approval.</p>
       </section>
       <section className="page-content lender-section">
+        <div className="section-inner lender-visual-hero">
+          <div>
+            <span className="premium-eyebrow">Lender map</span>
+            <h2>From borrower profile to suitable finance channel.</h2>
+            <p>Each category below represents a route Aura can evaluate after reviewing documents, use case, repayment comfort and lender policy.</p>
+          </div>
+          <div className="lender-image-stage">
+            <Image src="/assets/aura-fintec-profile.jpeg" alt="Aura Fintec Services loan syndication and financial advisory visual" width={1254} height={1254} />
+            <div className="orbit orbit-one">Profile</div>
+            <div className="orbit orbit-two">Documents</div>
+            <div className="orbit orbit-three">Lender fit</div>
+          </div>
+        </div>
         <div className="section-inner lender-intro">
           <div>
             <span className="eyebrow">Verification-safe</span>
@@ -45,6 +59,10 @@ export default function PartnersPage() {
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <h2>{partner}</h2>
                 <p>{partnerDescriptions[index]}</p>
+                <div className="lender-flow">
+                  <i />
+                  <strong>{index < 3 ? "Retail + business use" : index < 6 ? "Working capital route" : "Assessment route"}</strong>
+                </div>
               </Reveal>
             );
           })}

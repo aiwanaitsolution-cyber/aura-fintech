@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { BadgeCheck, BarChart3, Building2, FileSearch, Handshake, Landmark, ShieldCheck } from "lucide-react";
 import { clientPlaceholders, site } from "@/lib/client-data";
 
 export const metadata: Metadata = {
@@ -9,6 +10,21 @@ export const metadata: Metadata = {
 };
 
 export default function FounderPage() {
+  const journey = [
+    { title: "Corporate Banking", text: "Deep exposure to business finance requirements.", Icon: Landmark },
+    { title: "Credit Assessment", text: "Understanding documents, cash flow and repayment capacity.", Icon: FileSearch },
+    { title: "Structured Finance", text: "Arranging finance routes for growth and working capital.", Icon: BarChart3 },
+    { title: "Client Advisory", text: "Long-term relationships built on professionalism and clarity.", Icon: Handshake }
+  ];
+  const expertise = [
+    { label: "Corporate banking", Icon: Building2 },
+    { label: "Structured finance", Icon: BarChart3 },
+    { label: "Credit assessment", Icon: FileSearch },
+    { label: "Financial analysis", Icon: BadgeCheck },
+    { label: "Strategic advisory", Icon: ShieldCheck },
+    { label: "Loan syndication", Icon: Handshake }
+  ];
+
   return (
     <main>
       <section className="page-hero founder-page-hero">
@@ -23,26 +39,32 @@ export default function FounderPage() {
         </div>
       </section>
       <section className="page-content">
-        <div className="section-inner founder-profile-layout">
-          <article className="page-panel founder-profile-copy">
+        <div className="section-inner founder-visual-story">
+          <article className="founder-manifesto">
             <span className="premium-eyebrow">About the founder</span>
             <h2>Banking insight. Structured finance discipline. Relationship-led advisory.</h2>
             <p>{clientPlaceholders.founderBio}</p>
-            <p>{clientPlaceholders.founderExtended}</p>
-            <p>{clientPlaceholders.founderVision}</p>
+            <blockquote>Financial guidance should simplify complexity and help businesses grow with discipline.</blockquote>
           </article>
-          <aside className="page-panel founder-credentials">
-            <h2>Core expertise</h2>
-            <ul>
-              <li>Corporate banking</li>
-              <li>Structured finance</li>
-              <li>Credit assessment</li>
-              <li>Financial analysis</li>
-              <li>Strategic financial advisory</li>
-              <li>Loan syndication facilitation</li>
-            </ul>
-            <Link className="primary-button" href="/contact-us">Contact Aura</Link>
-          </aside>
+          <div className="founder-journey-map">
+            {journey.map(({ title, text, Icon }, index) => (
+              <div className="journey-node" key={title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <Icon size={24} />
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="section-inner expertise-board">
+          {expertise.map(({ label, Icon }) => (
+            <div key={label}>
+              <Icon size={22} />
+              <strong>{label}</strong>
+            </div>
+          ))}
+          <Link className="blue-action" href="/contact-us">Contact Aura</Link>
         </div>
       </section>
     </main>

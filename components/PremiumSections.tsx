@@ -167,10 +167,17 @@ export function BentoServiceGrid() {
 export function AudienceTabs() {
   const [active, setActive] = useState(0);
   const item = audienceSolutions[active];
+  const selectedServices = item.recommended
+    .map((title) => services.find((service) => service.title === title))
+    .filter(Boolean)
+    .slice(0, 3);
   return (
-    <section className="premium-section dark-fin-panel">
-      <div className="section-head"><span className="premium-eyebrow">Audience solutions</span><h2>Guidance adapts to the borrower profile.</h2></div>
-      <div className="audience-shell">
+    <section className="premium-section dark-fin-panel audience-redesign">
+      <div className="section-head">
+        <span className="premium-eyebrow">Audience solutions</span>
+        <h2>Choose a profile. See the finance route instantly.</h2>
+      </div>
+      <div className="audience-shell advanced-tabs">
         <div className="segment-tabs" role="tablist" aria-label="Borrower profile">
           {audienceSolutions.map((solution, index) => (
             <button key={solution.label} onClick={() => setActive(index)} className={active === index ? "active" : ""} role="tab" aria-selected={active === index}>
@@ -179,13 +186,39 @@ export function AudienceTabs() {
           ))}
         </div>
         <motion.div className="audience-card" key={item.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
-          <h3>{item.label}</h3>
-          <div className="pill-row">{item.recommended.map((text) => <span key={text}>{text}</span>)}</div>
-          <div className="grid-2">
-            <div><h4>Benefits</h4>{item.benefits.map((text) => <p key={text}><CheckCircle2 size={16} /> {text}</p>)}</div>
-            <div><h4>Common requirements</h4>{item.requirements.map((text) => <p key={text}><FileCheck2 size={16} /> {text}</p>)}</div>
+          <div className="audience-visual-top">
+            <div>
+              <span className="profile-chip">Active profile</span>
+              <h3>{item.label}</h3>
+            </div>
+            <div className="readiness-meter" aria-label="Readiness score">
+              <span>{78 + active * 3}%</span>
+            </div>
           </div>
-          <Link className="primary-button" href="/apply-now">Check this profile</Link>
+          <div className="profile-pathway" aria-label="Recommended finance pathway">
+            {selectedServices.map((service, index) => {
+              if (!service) return null;
+              const Icon = service.icon;
+              return (
+                <Link href={`/services/${service.slug}`} className="pathway-node" key={service.slug}>
+                  <Icon size={22} />
+                  <strong>{service.title}</strong>
+                  <small>{index === 0 ? "Best first check" : "Also review"}</small>
+                </Link>
+              );
+            })}
+          </div>
+          <div className="visual-check-grid">
+            <div>
+              <h4>What works</h4>
+              {item.benefits.map((text) => <p key={text}><CheckCircle2 size={16} /> {text}</p>)}
+            </div>
+            <div>
+              <h4>Keep ready</h4>
+              {item.requirements.map((text) => <p key={text}><FileCheck2 size={16} /> {text}</p>)}
+            </div>
+          </div>
+          <Link className="blue-action" href="/apply-now">Check this profile <ArrowRight size={17} /></Link>
         </motion.div>
       </div>
     </section>
@@ -273,12 +306,23 @@ export function DocumentChecklist() {
   const [active, setActive] = useState(0);
   const set = documentSets[active];
   return (
-    <section className="premium-section">
-      <div className="section-head split"><div><span className="premium-eyebrow">Document readiness</span><h2>Switch by profile and prepare faster.</h2></div></div>
-      <div className="docs-shell">
+    <section className="premium-section docs-redesign">
+      <div className="section-head split"><div><span className="premium-eyebrow">Document readiness</span><h2>Tap a profile. Build the lender file visually.</h2></div></div>
+      <div className="docs-shell advanced-tabs">
         <div className="segment-tabs">{documentSets.map((item, index) => <button key={item.label} className={active === index ? "active" : ""} onClick={() => setActive(index)}>{item.label}</button>)}</div>
         <motion.div className="doc-list" key={set.label} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          {set.docs.map((doc) => <p key={doc}><FileCheck2 size={18} /> {doc}</p>)}
+          <div className="doc-progress">
+            <strong>{set.docs.length}</strong>
+            <span>document groups</span>
+          </div>
+          <div className="doc-card-grid">
+            {set.docs.map((doc, index) => (
+              <p key={doc} style={{ ["--delay" as string]: `${index * 70}ms` }}>
+                <FileCheck2 size={18} />
+                <span>{doc}</span>
+              </p>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

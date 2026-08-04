@@ -3,6 +3,7 @@ import { Inter, Manrope } from "next/font/google";
 import { Phone, MessageCircle } from "lucide-react";
 import { ChatAssistant } from "@/components/ChatAssistant";
 import { Footer } from "@/components/Footer";
+import { FounderNudge } from "@/components/FounderNudge";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/client-data";
 import "./globals.css";
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Header />
         {children}
+        <FounderNudge />
         <Footer />
         <div className="floating-actions" aria-label="Quick contact actions">
           <a href={`https://wa.me/${site.whatsapp}?text=${whatsappMessage}`} target="_blank" rel="noreferrer" aria-label="WhatsApp Aura Fintec Services">
