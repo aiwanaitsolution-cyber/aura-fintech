@@ -1,6 +1,5 @@
 import { FAQ } from "@/components/FAQ";
 import {
-  AnimatedMetrics,
   AudienceTabs,
   BentoServiceGrid,
   BlogShowcase,
@@ -9,8 +8,6 @@ import {
   FounderSpotlight,
   PremiumCTA,
   PremiumHero,
-  ProcessTimeline,
-  TestimonialCarousel,
   TrustLogoMarquee
 } from "@/components/PremiumSections";
 import { faqs } from "@/lib/client-data";
@@ -20,14 +17,11 @@ export default function HomePage() {
     <main>
       <PremiumHero />
       <TrustLogoMarquee />
-      <AnimatedMetrics />
       <BentoServiceGrid />
       <AudienceTabs />
-      <ProcessTimeline />
       <EmiPreview />
       <FounderSpotlight />
       <DocumentChecklist />
-      <TestimonialCarousel />
       <BlogShowcase />
       <section className="premium-section faq-premium">
         <div className="section-head split">

@@ -33,24 +33,40 @@ import { calculateEmi, formatInr } from "@/lib/calculators";
 export function PremiumHero() {
   const reduced = useReducedMotion();
   return (
-    <section className="premium-hero">
+    <section className="premium-hero cinematic-hero">
+      <div className="hero-video-fallback" aria-hidden />
+      {!reduced && (
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/assets/aura-loan-syndication.jpeg"
+          aria-hidden="true"
+        >
+          <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
+        </video>
+      )}
+      <div className="hero-cinematic-overlay" aria-hidden />
       <div className="hero-grid-bg" aria-hidden />
       <motion.div
-        className="hero-copy"
+        className="hero-copy cinematic-copy"
         initial={reduced ? false : { opacity: 0, y: 24 }}
         animate={reduced ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <span className="premium-eyebrow"><Sparkles size={16} /> CA-led finance facilitation</span>
+        <span className="premium-eyebrow"><Sparkles size={16} /> CA-led loan syndication and advisory</span>
         <h1>
-          Borrow smarter with a <span>premium FinTech advisory desk.</span>
+          Finance decisions need <span>structure, not noise.</span>
         </h1>
         <p>
-          Aura Fintec Services helps Indian borrowers and businesses compare loan scenarios, prepare lender-ready
-          documents and move with clarity from inquiry to next step.
+          Aura Fintec Services helps businesses, professionals and families prepare lender-ready applications,
+          structure finance requirements and move with clarity from inquiry to the right next step.
         </p>
         <div className="hero-badges">
-          {["No approval guarantees", "Indicative calculators", "Client-consent first"].map((badge) => (
+          {["14+ years founder experience", "Structured finance guidance", "Consent-led coordination"].map((badge) => (
             <span key={badge}><BadgeCheck size={15} /> {badge}</span>
           ))}
         </div>
@@ -58,8 +74,10 @@ export function PremiumHero() {
           <Link className="primary-button magnetic" href="/apply-now">Start Application <ArrowRight size={18} /></Link>
           <Link className="ghost-button magnetic" href="/calculators/emi-calculator">Calculate EMI</Link>
         </div>
+        <p className="hero-trust-line">Loan approval and final terms remain subject to lender policy, documentation and eligibility.</p>
       </motion.div>
       <FloatingFinanceDashboard />
+      <div className="hero-scroll-indicator" aria-hidden><span /></div>
     </section>
   );
 }
@@ -123,12 +141,12 @@ export function AnimatedMetrics() {
 
 export function BentoServiceGrid() {
   const featured = services.filter((service) =>
-    ["business-loan", "home-loan", "loan-against-property", "msme-loan", "working-capital-loan", "personal-loan", "machinery-loan", "balance-transfer"].includes(service.slug)
+    ["business-loan", "personal-loan", "home-loan", "loan-against-property", "msme-loan", "working-capital-loan"].includes(service.slug)
   );
   return (
     <section className="premium-section">
       <div className="section-head split">
-        <div><span className="premium-eyebrow">Loan services</span><h2>Bento-built finance pathways, not commodity cards.</h2></div>
+        <div><span className="premium-eyebrow">Loan services</span><h2>Start with the finance pathway that matches the decision.</h2></div>
         <Link className="ghost-button" href="/financial-services">View all services</Link>
       </div>
       <div className="bento-grid">

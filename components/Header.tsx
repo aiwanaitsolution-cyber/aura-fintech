@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, Calculator, ChevronDown, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { blogPosts, calculators, services, site } from "@/lib/client-data";
@@ -18,7 +19,10 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<"services" | "calculators" | "resources" | null>(null);
   const [pinnedMenu, setPinnedMenu] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isHome = pathname === "/";
 
   const whatsappMessage = encodeURIComponent("Hello Aura Fintec Services, I want guidance for a loan or finance requirement.");
   const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${whatsappMessage}`;
@@ -40,13 +44,30 @@ export function Header() {
     setMenu(null);
   }
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
     <>
-      <div className="trust-bar">
-        <span>Loan facilitation by profile, documents and lender policy</span>
-        <Link href="/disclaimer">Read disclosures</Link>
-      </div>
-      <header className="site-header">
+      <header className={`site-header ${isHome && !scrolled ? "over-hero" : "is-solid"}`}>
         <Link className="logo-link" href="/" aria-label="Aura Fintec Services home">
           <Image src="/assets/aura-logo.svg" alt="Aura Fintec Services logo" width={210} height={58} priority />
         </Link>

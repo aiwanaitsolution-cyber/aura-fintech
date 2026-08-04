@@ -20,7 +20,7 @@ import {
 export const site = {
   name: "Aura Fintec Services",
   founder: "CA Ankita Garg",
-  baseUrl: "https://aurafintec.example",
+  baseUrl: "https://aura-fintech.vercel.app",
   phone: "+91 96500 23854",
   whatsapp: "919650023854",
   email: "aurafintecservices@gmail.com",
