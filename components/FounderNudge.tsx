@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { useState } from "react";
 
 export function FounderNudge() {
   const [visible, setVisible] = useState(true);
-  if (!visible) return null;
+  const pathname = usePathname();
+  if (!visible || pathname !== "/") return null;
 
   return (
     <aside className="founder-nudge" aria-label="Founder note">

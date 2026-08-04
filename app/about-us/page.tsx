@@ -26,11 +26,13 @@ export default function AboutPage() {
               <div><TrendingUp size={24} /><strong>Outcome</strong><span>Better prepared conversations before formal lender assessment.</span></div>
             </div>
           </div>
-          <div className="about-founder-visual">
-            <Image src="/assets/ankita-garg.png" alt="CA Ankita Garg, Founder of Aura Fintec Services" width={720} height={900} />
+          <div className="about-founder-visual about-video-panel">
+            <video autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-loan-syndication.jpeg" aria-label="Business meeting video representing Aura Fintec advisory discussions">
+              <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
+            </video>
             <div>
-              <span>Founder-led</span>
-              <strong>14+ years banking and financial services experience</strong>
+              <span>Advisory in motion</span>
+              <strong>Business finance discussions made clearer, structured and lender-ready.</strong>
             </div>
           </div>
         </div>

@@ -1310,14 +1310,32 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-.about-founder-visual img {
+.about-founder-visual img,
+.about-founder-visual video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+.about-video-panel video {
+  display: block;
+  min-height: inherit;
+  filter: saturate(.92) contrast(1.05);
+}
+
+.about-video-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(4,27,56,.08), rgba(4,27,56,.56)),
+    radial-gradient(circle at 80% 10%, rgba(242,140,24,.18), transparent 16rem);
+  pointer-events: none;
+}
+
 .about-founder-visual > div {
   position: absolute;
+  z-index: 1;
   left: 18px;
   right: 18px;
   bottom: 18px;
@@ -1761,11 +1779,11 @@ blockquote {
 @keyframes nudgeIn {
   from {
     opacity: 0;
-    transform: translateY(-12px) scale(.98);
+    transform: translateX(-50%) translateY(-12px) scale(.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateX(-50%) translateY(0) scale(1);
   }
 }
 
@@ -2693,19 +2711,20 @@ td {
 
 .founder-nudge {
   position: fixed;
-  top: 96px;
-  right: 18px;
+  top: 98px;
+  left: 50%;
   z-index: 55;
   display: flex;
   align-items: start;
-  gap: 8px;
-  width: min(360px, calc(100vw - 28px));
-  padding: 10px;
-  background: rgba(255,255,255,.92);
+  gap: 12px;
+  width: min(520px, calc(100vw - 28px));
+  padding: 14px 16px 14px 14px;
+  background: rgba(255,255,255,.94);
   border: 1px solid rgba(219,229,239,.9);
   border-radius: 999px;
-  box-shadow: 0 22px 70px rgba(4,27,56,.16);
+  box-shadow: 0 28px 90px rgba(4,27,56,.2);
   backdrop-filter: blur(18px);
+  transform: translateX(-50%);
   animation: nudgeIn .5s ease both;
 }
 
@@ -2720,11 +2739,11 @@ td {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  width: 58px;
+  width: 78px;
   aspect-ratio: 1;
   overflow: hidden;
   background: linear-gradient(135deg, var(--deep), var(--primary));
-  border: 2px solid var(--amber);
+  border: 3px solid var(--amber);
   border-radius: 50%;
 }
 
@@ -2741,14 +2760,14 @@ td {
 
 .founder-nudge strong {
   color: var(--deep);
-  font-size: .94rem;
+  font-size: 1.08rem;
 }
 
 .founder-nudge em {
   color: var(--muted);
-  font-size: .78rem;
+  font-size: .92rem;
   font-style: normal;
-  line-height: 1.35;
+  line-height: 1.42;
 }
 
 .founder-nudge button {
@@ -3231,10 +3250,12 @@ td {
     bottom: 136px;
     width: auto;
     border-radius: 18px;
+    transform: none;
+    animation: none;
   }
 
   .founder-nudge-photo {
-    width: 52px;
+    width: 62px;
   }
 
   .service-showcase-card a {
