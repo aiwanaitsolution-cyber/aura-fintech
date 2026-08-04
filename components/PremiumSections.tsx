@@ -62,11 +62,10 @@ export function PremiumHero() {
           Finance decisions need <span>structure, not noise.</span>
         </h1>
         <p>
-          Aura Fintec Services helps businesses, professionals and families prepare lender-ready applications,
-          structure finance requirements and move with clarity from inquiry to the right next step.
+          CA-led loan syndication, structured finance and advisory for businesses, professionals and families.
         </p>
         <div className="hero-badges">
-          {["14+ years founder experience", "Structured finance guidance", "Consent-led coordination"].map((badge) => (
+          {["14+ years founder experience", "Structured finance guidance"].map((badge) => (
             <span key={badge}><BadgeCheck size={15} /> {badge}</span>
           ))}
         </div>
@@ -74,9 +73,7 @@ export function PremiumHero() {
           <Link className="primary-button magnetic" href="/apply-now">Start Application <ArrowRight size={18} /></Link>
           <Link className="ghost-button magnetic" href="/calculators/emi-calculator">Calculate EMI</Link>
         </div>
-        <p className="hero-trust-line">Loan approval and final terms remain subject to lender policy, documentation and eligibility.</p>
       </motion.div>
-      <FloatingFinanceDashboard />
       <div className="hero-scroll-indicator" aria-hidden><span /></div>
     </section>
   );
