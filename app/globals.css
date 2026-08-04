@@ -245,6 +245,63 @@ textarea {
   border-color: var(--border);
 }
 
+.blue-action {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  min-height: 46px;
+  padding: 0 18px;
+  overflow: hidden;
+  color: var(--amber);
+  background:
+    linear-gradient(135deg, var(--deep), var(--primary));
+  border: 1px solid rgba(242, 140, 24, 0.28);
+  border-radius: 6px;
+  box-shadow: 0 16px 34px rgba(4, 27, 56, 0.16);
+  font-weight: 950;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.blue-action::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.18) 48%, transparent 100%);
+  transform: translateX(-120%);
+  transition: transform 0.55s ease;
+}
+
+.blue-action:hover {
+  color: var(--amber);
+  border-color: rgba(242, 140, 24, 0.55);
+  box-shadow: 0 22px 48px rgba(4, 27, 56, 0.24);
+  transform: translateY(-3px);
+}
+
+.blue-action:hover::before {
+  transform: translateX(120%);
+}
+
+.blue-action svg {
+  flex: 0 0 auto;
+  transition: transform 0.24s ease;
+}
+
+.blue-action:hover svg {
+  transform: translateX(4px);
+}
+
+.small-action {
+  min-height: 38px;
+  padding-inline: 14px;
+  font-size: 0.88rem;
+}
+
 .compact {
   min-height: 40px;
   padding-inline: 14px;
@@ -744,6 +801,11 @@ textarea {
   font-weight: 950;
 }
 
+.bento-card a.blue-action {
+  color: var(--amber);
+  margin-top: 22px;
+}
+
 .dark-fin-panel {
   color: #fff;
   background:
@@ -1084,6 +1146,22 @@ blockquote {
   display: block;
   color: var(--muted);
   margin-top: 8px;
+}
+
+.blog-card .blue-action,
+.resource-card .blue-action {
+  display: inline-flex;
+  color: var(--amber);
+  margin-top: 18px;
+}
+
+.resource-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.resource-card .card-action {
+  margin-top: auto;
 }
 
 .blog-layout {
@@ -1477,6 +1555,11 @@ blockquote {
   gap: 6px;
   margin-top: auto;
   color: var(--orange);
+}
+
+.service-showcase-card strong.blue-action {
+  color: var(--amber);
+  margin-top: auto;
 }
 
 .accent-1 .service-icon {

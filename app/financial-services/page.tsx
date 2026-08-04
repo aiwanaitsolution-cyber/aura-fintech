@@ -39,7 +39,7 @@ export default function FinancialServicesPage() {
                     <span><Clock size={14} /> {service.tenure}</span>
                     <span><FileCheck2 size={14} /> {service.documents.length} document groups</span>
                   </div>
-                  <strong>Explore pathway <ArrowRight size={17} /></strong>
+                  <strong className="blue-action small-action">Explore pathway <ArrowRight size={17} /></strong>
                 </Link>
               </Reveal>
             );

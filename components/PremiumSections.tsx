@@ -144,7 +144,7 @@ export function BentoServiceGrid() {
     <section className="premium-section">
       <div className="section-head split">
         <div><span className="premium-eyebrow">Loan services</span><h2>Start with the finance pathway that matches the decision.</h2></div>
-        <Link className="ghost-button" href="/financial-services">View all services</Link>
+        <Link className="blue-action" href="/financial-services">View all services <ArrowRight size={17} /></Link>
       </div>
       <div className="bento-grid">
         {featured.map((service, index) => {
@@ -155,7 +155,7 @@ export function BentoServiceGrid() {
               <h3>{service.title}</h3>
               <p>{service.short}</p>
               <small>{service.audience}</small>
-              <Link href={`/services/${service.slug}`}>Learn more <ArrowRight size={15} /></Link>
+              <Link className="blue-action small-action" href={`/services/${service.slug}`}>Learn more <ArrowRight size={15} /></Link>
             </motion.div>
           );
         })}
@@ -303,9 +303,22 @@ export function TestimonialCarousel() {
 export function BlogShowcase() {
   return (
     <section className="premium-section editorial-section">
-      <div className="section-head split"><div><span className="premium-eyebrow">Financial insights</span><h2>Editorial resources with practical loan guidance.</h2></div><Link className="ghost-button" href="/resources">View all</Link></div>
+      <div className="section-head split">
+        <div>
+          <span className="premium-eyebrow">Financial insights</span>
+          <h2>Editorial resources with practical loan guidance.</h2>
+        </div>
+        <Link className="blue-action" href="/resources">View all resources <ArrowRight size={17} /></Link>
+      </div>
       <div className="blog-layout">
-        {blogPosts.map((post, index) => <Link className={index === 0 ? "blog-card featured-blog" : "blog-card"} href={`/resources/${post.slug}`} key={post.slug}><span>Guide · 4 min read</span><h3>{post.title}</h3><p>{post.excerpt}</p></Link>)}
+        {blogPosts.map((post, index) => (
+          <Link className={index === 0 ? "blog-card featured-blog" : "blog-card"} href={`/resources/${post.slug}`} key={post.slug}>
+            <span>Guide - 4 min read</span>
+            <h3>{post.title}</h3>
+            <p>{post.excerpt}</p>
+            <span className="blue-action small-action card-action">Read guide <ArrowRight size={15} /></span>
+          </Link>
+        ))}
       </div>
     </section>
   );
