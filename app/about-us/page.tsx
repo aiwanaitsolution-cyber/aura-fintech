@@ -13,11 +13,11 @@ export default function AboutPage() {
     <main>
       <section className="page-hero"><span className="eyebrow">About Aura</span><h1>Loan syndication services and financial advisory for ambitious businesses.</h1><p>{site.tagline}</p></section>
       <section className="page-content about-experience">
+        <video className="about-section-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-loan-syndication.jpeg" aria-hidden="true">
+          <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
+        </video>
         <div className="section-inner sticky-story-section">
           <div className="about-story-card sticky-about-background">
-            <video autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-loan-syndication.jpeg" aria-label="Business meeting video representing Aura Fintec advisory discussions">
-              <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
-            </video>
             <div className="about-background-content">
               <span className="premium-eyebrow">What Aura does</span>
               <h2>Finance made easier to see, prepare and discuss.</h2>
