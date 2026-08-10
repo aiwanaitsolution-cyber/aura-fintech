@@ -11,6 +11,7 @@
   --white: #ffffff;
   --shadow: 0 22px 60px rgba(4, 27, 56, 0.12);
   --radius: 8px;
+  --header-offset: 136px;
 }
 
 * {
@@ -30,6 +31,12 @@ body {
     radial-gradient(circle at 16% 4%, rgba(242, 140, 24, 0.1), transparent 30rem),
     linear-gradient(180deg, #fffdf8 0%, #f6f8fb 42%, #fff 100%);
   font-family: var(--font-inter), Arial, sans-serif;
+}
+
+body::before {
+  content: "";
+  display: block;
+  height: var(--header-offset);
 }
 
 h1,
@@ -84,18 +91,20 @@ textarea {
   padding: 9px clamp(18px, 5vw, 72px);
   font-size: 0.8rem;
   font-weight: 800;
-  color: var(--primary);
-  border-bottom: 1px solid rgba(219, 229, 239, 0.82);
-  background: #fff;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(90deg, var(--deep), var(--primary) 58%, #0f4a93);
 }
 
 .header-topbar a {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: var(--primary);
+  color: #fff;
   max-width: 100%;
   overflow-wrap: anywhere;
+  transition: transform 0.22s ease, color 0.22s ease, opacity 0.22s ease, background 0.22s ease, border-color 0.22s ease;
 }
 
 .header-socials,
@@ -110,10 +119,21 @@ textarea {
   width: 28px;
   height: 28px;
   justify-content: center;
-  color: var(--primary);
-  border: 1px solid rgba(219, 229, 239, 0.82);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header-topbar a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.header-socials a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.48);
 }
 
 .header-main {
@@ -137,6 +157,11 @@ textarea {
   padding: 0;
   background: transparent;
   border-radius: 0;
+  transition: transform 0.22s ease;
+}
+
+.site-header .logo-link:hover {
+  transform: translateY(-2px);
 }
 
 .brand-lockup {
@@ -208,12 +233,14 @@ textarea {
   font-weight: 700;
   font-size: 0.94rem;
   white-space: nowrap;
+  transition: color 0.22s ease, transform 0.22s ease;
 }
 
 .desktop-nav a:hover,
 .desktop-nav a[aria-current="page"],
 .nav-menu-button:hover {
   color: var(--primary);
+  transform: translateY(-2px);
 }
 
 .site-header.is-solid .brand-icon {
@@ -669,7 +696,7 @@ textarea {
   gap: clamp(30px, 6vw, 80px);
   align-items: center;
   min-height: 100vh;
-  padding: clamp(118px, 13vw, 168px) clamp(18px, 5vw, 72px) clamp(82px, 10vw, 132px);
+  padding: clamp(56px, 7vw, 96px) clamp(18px, 5vw, 72px) clamp(82px, 10vw, 132px);
   color: #fff;
   overflow: hidden;
   background:
@@ -2696,7 +2723,7 @@ blockquote {
 }
 
 .page-hero {
-  padding: clamp(122px, 13vw, 164px) clamp(18px, 5vw, 72px) clamp(56px, 8vw, 96px);
+  padding: clamp(54px, 8vw, 86px) clamp(18px, 5vw, 72px) clamp(56px, 8vw, 96px);
   color: #fff;
   background: linear-gradient(135deg, var(--deep), var(--primary) 70%, #7d3606);
 }
@@ -3614,6 +3641,10 @@ td {
 }
 
 @media (max-width: 980px) {
+  :root {
+    --header-offset: 126px;
+  }
+
   .desktop-nav,
   .header-actions .ghost-button,
   .header-actions .primary-button,
@@ -3718,13 +3749,37 @@ td {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --header-offset: 170px;
+  }
+
+  .header-topbar {
+    justify-content: center;
+    gap: 8px 14px;
+    padding-block: 8px;
+  }
+
+  .header-socials,
+  .header-contact {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .header-contact {
+    width: 100%;
+  }
+
+  .header-contact a {
+    font-size: 0.76rem;
+  }
+
   .hero,
   .premium-hero {
     min-height: auto;
   }
 
   .premium-hero {
-    padding-top: 118px;
+    padding-top: 42px;
   }
 
   .hero-carousel-image {
@@ -3896,6 +3951,12 @@ td {
 
   .footer-bottom {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --header-offset: 200px;
   }
 }
 
