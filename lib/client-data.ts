@@ -19,15 +19,17 @@ export const site = {
   baseUrl: "https://aura-fintech.vercel.app",
   phone: "9650023854",
   whatsapp: "919650023854",
-  email: "contact@aurafintechservice.com",
+  email: "info@aurafintecservices.com",
   city: "India",
   address: "Consultations available by appointment",
   tagline: "Loan syndication services, structured finance and strategic financial advisory for businesses ready to grow.",
   logoStatus: "Launch assets supplied by client are stored locally in /public/assets. Replace the SVG logo with the final transparent master logo if available.",
   unverifiedNote: "Partner logos, client testimonials, registered address, GSTIN, CIN and DSA details still require client confirmation before publication.",
   social: {
+    instagram: "https://instagram.com/v",
+    twitter: "#",
     linkedin: "#",
-    instagram: "#"
+    facebook: "#"
   }
 };
 

@@ -9,7 +9,10 @@ export function Footer() {
     <footer className="site-footer premium-footer">
       <div className="footer-grid">
         <div>
-          <Image src="/assets/aura-logo.svg" alt="Aura Fintec Services logo" width={220} height={62} />
+          <Link className="logo-link footer-logo-link" href="/" aria-label="Aura Fintec Services home">
+            <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={72} height={72} />
+            <span className="brand-wordmark">AURA FINTEC services</span>
+          </Link>
           <p>{site.tagline}</p>
           <div className="newsletter-card">
             <strong>Get a consultation callback</strong>
