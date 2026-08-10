@@ -10,8 +10,8 @@ export function Footer() {
           <Link className="logo-link footer-logo-link brand-lockup" href="/" aria-label="Aura Fintec Services home">
             <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={56} height={56} className="brand-icon" />
             <span className="brand-wordmark" aria-label="Aura Fintec Services">
-              <span className="brand-name">AURA FINTEC</span>
-              <span className="brand-services">services</span>
+              <span className="brand-name">AURA</span>
+              <span className="brand-services">FINTEC SERVICES</span>
             </span>
           </Link>
           <p>{site.tagline}</p>

@@ -80,8 +80,8 @@ export function Header() {
           <Link className="logo-link brand-lockup" href="/" aria-label="Aura Fintec Services home">
             <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={64} height={64} priority className="brand-icon" />
             <span className="brand-wordmark" aria-label="Aura Fintec Services">
-              <span className="brand-name">AURA FINTEC</span>
-              <span className="brand-services">services</span>
+              <span className="brand-name">AURA</span>
+              <span className="brand-services">FINTEC SERVICES</span>
             </span>
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation" onMouseLeave={scheduleClose} onMouseEnter={() => closeTimer.current && clearTimeout(closeTimer.current)}>
@@ -118,8 +118,8 @@ export function Header() {
             <Link className="logo-link mobile-logo-link brand-lockup" href="/" onClick={() => setOpen(false)}>
               <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={56} height={56} className="brand-icon" />
               <span className="brand-wordmark" aria-label="Aura Fintec Services">
-                <span className="brand-name">AURA FINTEC</span>
-                <span className="brand-services">services</span>
+                <span className="brand-name">AURA</span>
+                <span className="brand-services">FINTEC SERVICES</span>
               </span>
             </Link>
             <button onClick={() => setOpen(false)} aria-label="Close navigation">
