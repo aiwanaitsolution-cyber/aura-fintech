@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Eye, Handshake, Target, TrendingUp } from "lucide-react";
-import { clientPlaceholders, services, site } from "@/lib/client-data";
+import { ArrowRight, BadgeCheck } from "lucide-react";
+import { FounderSection } from "@/components/FounderSection";
+import { services, site } from "@/lib/client-data";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -23,10 +24,10 @@ export default function AboutPage() {
               <h2 className="about-glass-title">Finance made easier to see, prepare and discuss.</h2>
               <p className="about-glass-intro">Aura turns loan requirements into a clear path: profile, documents, lender fit and next action.</p>
               <div className="mission-vision-grid">
-                <div><Target size={24} /><strong>Mission</strong><span>Simplify complex finance decisions for businesses and families.</span></div>
-                <div><Eye size={24} /><strong>Vision</strong><span>Help clients grow with disciplined, lender-ready financial choices.</span></div>
-                <div><Handshake size={24} /><strong>Principle</strong><span>Consent-led coordination and transparent lender-policy disclosures.</span></div>
-                <div><TrendingUp size={24} /><strong>Outcome</strong><span>Better prepared conversations before formal lender assessment.</span></div>
+                <div><BadgeCheck size={24} /><strong>Mission</strong><span>Simplify complex finance decisions for businesses and families.</span></div>
+                <div><BadgeCheck size={24} /><strong>Vision</strong><span>Help clients grow with disciplined, lender-ready financial choices.</span></div>
+                <div><BadgeCheck size={24} /><strong>Principle</strong><span>Consent-led coordination and transparent lender-policy disclosures.</span></div>
+                <div><BadgeCheck size={24} /><strong>Outcome</strong><span>Better prepared conversations before formal lender assessment.</span></div>
               </div>
             </div>
           </div>
@@ -45,6 +46,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
+        <FounderSection />
         <div className="section-inner service-strip" aria-label="Featured loan services">
           <div>
           {[...services.slice(0, 8), ...services.slice(0, 8)].map((service, index) => {
@@ -58,15 +60,6 @@ export default function AboutPage() {
             );
           })}
           </div>
-        </div>
-        <div className="section-inner founder-mini-journey">
-          {[
-            ["Banking", "Corporate finance and credit assessment foundations."],
-            ["Structuring", "Practical funding routes for MSMEs, startups and corporates."],
-            ["Advisory", "Relationship-led guidance with professional discipline."]
-          ].map(([title, text]) => (
-            <div key={title}><BadgeCheck size={20} /><strong>{title}</strong><span>{text}</span></div>
-          ))}
         </div>
       </section>
     </main>

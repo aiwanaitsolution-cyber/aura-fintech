@@ -45,7 +45,7 @@ export function Footer() {
         <div>
           <h2>Company</h2>
           <Link href="/about-us">About Aura</Link>
-          <Link href="/founder">Founder</Link>
+          <Link href="/about-us#founder">Founder</Link>
           <Link href="/lending-partners">Lending Partners</Link>
           <Link href="/become-a-partner">Become a Partner</Link>
         </div>

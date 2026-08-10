@@ -5,19 +5,12 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Calculator, ChevronDown, Facebook, Instagram, Linkedin, Mail, Menu, MessageCircle, Phone, Twitter, X } from "lucide-react";
-import { blogPosts, calculators, services, site } from "@/lib/client-data";
-
-const mainLinks = [
-  { href: "/about-us", label: "About" },
-  { href: "/founder", label: "Founder" },
-  { href: "/lending-partners", label: "Partners" },
-  { href: "/contact-us", label: "Contact" }
-];
+import { BookOpen, ChevronDown, Facebook, Instagram, Linkedin, Mail, Menu, MessageCircle, Phone, Twitter, X } from "lucide-react";
+import { blogPosts, services, site } from "@/lib/client-data";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [menu, setMenu] = useState<"services" | "calculators" | "resources" | null>(null);
+  const [menu, setMenu] = useState<"about" | "services" | "resources" | null>(null);
   const [pinnedMenu, setPinnedMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -27,7 +20,7 @@ export function Header() {
   const whatsappMessage = encodeURIComponent("Hello Aura Fintec Services, I want guidance for a loan or finance requirement.");
   const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${whatsappMessage}`;
 
-  function openMenu(nextMenu: "services" | "calculators" | "resources", pinned = false) {
+  function openMenu(nextMenu: "about" | "services" | "resources", pinned = false) {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setPinnedMenu(pinned);
     setMenu(nextMenu);
@@ -103,26 +96,21 @@ export function Header() {
             </span>
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation" onMouseLeave={scheduleClose} onMouseEnter={() => closeTimer.current && clearTimeout(closeTimer.current)}>
-            {mainLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
-                {link.label}
-              </Link>
-            ))}
+            <Link href="/" aria-current={isHome ? "page" : undefined}>Home</Link>
+            <button className="nav-menu-button" onMouseEnter={() => openMenu("about")} onFocus={() => openMenu("about")} onClick={() => menu === "about" && pinnedMenu ? closeMenu() : openMenu("about", true)} aria-expanded={menu === "about"}>
+              About <ChevronDown size={16} aria-hidden />
+            </button>
+            <Link href="/lending-partners">Partners</Link>
             <button className="nav-menu-button" onMouseEnter={() => openMenu("services")} onFocus={() => openMenu("services")} onClick={() => menu === "services" && pinnedMenu ? closeMenu() : openMenu("services", true)} aria-expanded={menu === "services"}>
               Services <ChevronDown size={16} aria-hidden />
-            </button>
-            <button className="nav-menu-button" onMouseEnter={() => openMenu("calculators")} onFocus={() => openMenu("calculators")} onClick={() => menu === "calculators" && pinnedMenu ? closeMenu() : openMenu("calculators", true)} aria-expanded={menu === "calculators"}>
-              Calculators <ChevronDown size={16} aria-hidden />
             </button>
             <button className="nav-menu-button" onMouseEnter={() => openMenu("resources")} onFocus={() => openMenu("resources")} onClick={() => menu === "resources" && pinnedMenu ? closeMenu() : openMenu("resources", true)} aria-expanded={menu === "resources"}>
               Resources <ChevronDown size={16} aria-hidden />
             </button>
+            <Link href="/contact-us">Contact</Link>
             <AnimatePresence>{menu && <MegaMenu type={menu} close={closeMenu} keepOpen={() => closeTimer.current && clearTimeout(closeTimer.current)} scheduleClose={scheduleClose} />}</AnimatePresence>
           </nav>
           <div className="header-actions">
-            <Link className="icon-link" href="/calculators/emi-calculator" aria-label="Open EMI calculator">
-              <Calculator size={19} />
-            </Link>
             <a className="ghost-button compact" href={`tel:${site.phone.replace(/\s/g, "")}`}>
               <Phone size={16} /> Call
             </a>
@@ -152,21 +140,18 @@ export function Header() {
               <X />
             </button>
           </div>
-          {[...mainLinks, { href: "/apply-now", label: "Apply Now" }].map((link) => (
+          {[{ href: "/", label: "Home" }, { href: "/lending-partners", label: "Partners" }, { href: "/contact-us", label: "Contact" }, { href: "/apply-now", label: "Apply Now" }].map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
               {link.label}
             </Link>
           ))}
+          <div className="mobile-section-title">About</div>
+          <Link href="/about-us" onClick={() => setOpen(false)}>About Aura</Link>
+          <Link href="/about-us#founder" onClick={() => setOpen(false)}>Founder</Link>
           <div className="mobile-section-title">Loan Products</div>
           {services.map((service) => (
             <Link key={service.slug} href={`/services/${service.slug}`} onClick={() => setOpen(false)}>
               {service.title}
-            </Link>
-          ))}
-          <div className="mobile-section-title">Calculators</div>
-          {calculators.map((calculator) => (
-            <Link key={calculator.slug} href={`/calculators/${calculator.slug}`} onClick={() => setOpen(false)}>
-              {calculator.title}
             </Link>
           ))}
         </div>
@@ -175,22 +160,27 @@ export function Header() {
   );
 }
 
-function MegaMenu({ type, close, keepOpen, scheduleClose }: { type: "services" | "calculators" | "resources"; close: () => void; keepOpen: () => void; scheduleClose: () => void }) {
-  const title = type === "services" ? "Choose a loan pathway" : type === "calculators" ? "Plan before applying" : "Read and prepare";
+function MegaMenu({ type, close, keepOpen, scheduleClose }: { type: "about" | "services" | "resources"; close: () => void; keepOpen: () => void; scheduleClose: () => void }) {
+  const title = type === "services" ? "Choose a loan pathway" : type === "about" ? "Meet the story behind Aura" : "Read and prepare";
   return (
     <motion.div className="mega-menu premium-mega" onMouseEnter={keepOpen} onMouseLeave={scheduleClose} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}>
       <div className="mega-feature">
-        {type === "calculators" ? <Calculator /> : <BookOpen />}
+        <BookOpen />
         <h3>{title}</h3>
         <p>Built for clarity, document readiness and responsible loan decisions.</p>
         <Link className="primary-button compact" href="/apply-now" onClick={close}>Apply Now</Link>
       </div>
       <div className="mega-links">
+        {type === "about" && (
+          <>
+            <Link href="/about-us" onClick={close}><BookOpen size={18} /><span>About Aura<small>Company story and service approach</small></span></Link>
+            <Link href="/about-us#founder" onClick={close}><BookOpen size={18} /><span>Founder<small>CA Ankita Garg profile</small></span></Link>
+          </>
+        )}
         {type === "services" && services.map((service) => {
           const Icon = service.icon;
           return <Link key={service.slug} href={`/services/${service.slug}`} onClick={close}><Icon size={18} /><span>{service.title}<small>{service.audience}</small></span></Link>;
         })}
-        {type === "calculators" && calculators.map((calculator) => <Link key={calculator.slug} href={`/calculators/${calculator.slug}`} onClick={close}><Calculator size={18} /><span>{calculator.title}<small>Indicative planning tool</small></span></Link>)}
         {type === "resources" && blogPosts.map((post) => <Link key={post.slug} href={`/resources/${post.slug}`} onClick={close}><BookOpen size={18} /><span>{post.title}<small>{post.excerpt}</small></span></Link>)}
       </div>
     </motion.div>

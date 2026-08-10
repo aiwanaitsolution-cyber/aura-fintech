@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Clock, FileCheck2 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { services } from "@/lib/client-data";
+import { CalculatorSuite } from "@/components/CalculatorSuite";
+import { calculators, services } from "@/lib/client-data";
 
 export const metadata: Metadata = {
   title: "All Financial Services",
@@ -44,6 +45,24 @@ export default function FinancialServicesPage() {
               </Reveal>
             );
           })}
+        </div>
+        <div className="section-inner calculator-hub">
+          <div className="section-head">
+            <span className="eyebrow">Planning tools</span>
+            <h2>Calculator tools now live inside the services area.</h2>
+            <p>Use these within the services section instead of the header navigation.</p>
+          </div>
+          <div className="calculator-chip-grid">
+            {calculators.map((calculator) => (
+              <Link key={calculator.slug} className="calculator-chip-card" href={`/calculators/${calculator.slug}`}>
+                <strong>{calculator.title}</strong>
+                <span>Open calculator</span>
+              </Link>
+            ))}
+          </div>
+          <div className="service-calculator-band">
+            <CalculatorSuite type="emi" title="Quick EMI Preview" />
+          </div>
         </div>
       </section>
     </main>

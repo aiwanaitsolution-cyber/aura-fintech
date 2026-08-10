@@ -354,7 +354,6 @@ export const blogPosts = [
 export const allRoutes = [
   "/",
   "/about-us",
-  "/founder",
   "/financial-services",
   ...services.map((service) => `/services/${service.slug}`),
   ...calculators.map((calculator) => `/calculators/${calculator.slug}`),
