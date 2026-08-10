@@ -95,9 +95,12 @@ export function Header() {
           </div>
         </div>
         <div className="header-main">
-          <Link className="logo-link" href="/" aria-label="Aura Fintec Services home">
-            <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={76} height={76} priority />
-            <span className="brand-wordmark">AURA FINTEC services</span>
+          <Link className="logo-link brand-lockup" href="/" aria-label="Aura Fintec Services home">
+            <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={64} height={64} priority className="brand-icon" />
+            <span className="brand-wordmark" aria-label="Aura Fintec Services">
+              <span className="brand-name">AURA FINTEC</span>
+              <span className="brand-services">services</span>
+            </span>
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation" onMouseLeave={scheduleClose} onMouseEnter={() => closeTimer.current && clearTimeout(closeTimer.current)}>
             {mainLinks.map((link) => (
@@ -138,9 +141,12 @@ export function Header() {
       {open && (
         <div className="mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
           <div className="mobile-panel-head">
-            <Link className="logo-link mobile-logo-link" href="/" onClick={() => setOpen(false)}>
-              <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={64} height={64} />
-              <span className="brand-wordmark">AURA FINTEC services</span>
+            <Link className="logo-link mobile-logo-link brand-lockup" href="/" onClick={() => setOpen(false)}>
+              <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={56} height={56} className="brand-icon" />
+              <span className="brand-wordmark" aria-label="Aura Fintec Services">
+                <span className="brand-name">AURA FINTEC</span>
+                <span className="brand-services">services</span>
+              </span>
             </Link>
             <button onClick={() => setOpen(false)} aria-label="Close navigation">
               <X />

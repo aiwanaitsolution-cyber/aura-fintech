@@ -141,19 +141,49 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.brand-lockup {
+  min-width: 0;
+}
+
+.brand-icon {
+  display: block;
+  object-fit: contain;
+  border-radius: 0;
+  background: transparent;
+  transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
 }
 
 .brand-wordmark {
-  color: var(--deep);
-  font-family: var(--font-display), var(--font-inter), Arial, sans-serif;
-  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
   font-weight: 900;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
   white-space: nowrap;
+  transition: color 220ms ease, text-shadow 220ms ease;
+}
+
+.brand-name {
+  color: #d96a00;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(1.35rem, 2.2vw, 2.05rem);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand-services {
+  color: #17345c;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: clamp(0.7rem, 1vw, 0.92rem);
+  font-weight: 800;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
 }
 
 .mobile-logo-link,
@@ -190,6 +220,23 @@ textarea {
 .site-header.over-hero .brand-wordmark {
   color: #fff;
   text-shadow: 0 1px 18px rgba(0, 0, 0, 0.38);
+}
+
+.site-header.over-hero .brand-name,
+.site-header.over-hero .brand-services {
+  color: #fff;
+}
+
+.site-header.over-hero .brand-icon {
+  filter: brightness(0) invert(1);
+}
+
+.site-header.is-solid .brand-icon {
+  filter: none;
+}
+
+.site-header.is-solid .brand-wordmark {
+  text-shadow: none;
 }
 
 .nav-menu-button,
@@ -427,6 +474,14 @@ textarea {
 
 .mobile-panel .logo-link {
   padding-left: 0;
+}
+
+.footer-logo-link .brand-name {
+  font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+}
+
+.footer-logo-link .brand-services {
+  font-size: clamp(0.62rem, 0.9vw, 0.78rem);
 }
 
 .mobile-section-title {
