@@ -5,6 +5,7 @@ import { ArrowRight, BadgeCheck, Clock, FileCheck2 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { CalculatorSuite } from "@/components/CalculatorSuite";
 import { calculators, services } from "@/lib/client-data";
+import { getServiceImage } from "@/lib/service-assets";
 
 export const metadata: Metadata = {
   title: "All Financial Services",
@@ -31,6 +32,7 @@ export default function FinancialServicesPage() {
             return (
               <Reveal className={`service-showcase-card accent-${accent}`} key={service.slug}>
                 <Link href={`/services/${service.slug}`}>
+                  <Image className="service-card-bg" src={getServiceImage(service.slug)} alt="" fill sizes="(max-width: 980px) 50vw, 33vw" />
                   <span className="service-index">{String(index + 1).padStart(2, "0")}</span>
                   <span className="service-icon"><Icon size={28} /></span>
                   <h2>{service.title}</h2>

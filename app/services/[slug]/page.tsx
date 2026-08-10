@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FAQ } from "@/components/FAQ";
@@ -6,6 +7,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { CalculatorSuite } from "@/components/CalculatorSuite";
 import { PremiumCTA } from "@/components/PremiumSections";
 import { services, site } from "@/lib/client-data";
+import { getServiceImage } from "@/lib/service-assets";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -27,6 +29,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const service = services.find((item) => item.slug === slug);
   if (!service) notFound();
   const Icon = service.icon;
+  const serviceImage = getServiceImage(service.slug);
   return (
     <main>
       <section className={`page-hero service-hero service-${service.slug}`}>
@@ -41,6 +44,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
         <div className="service-visual-card">
+          <Image src={serviceImage} alt={`${service.title} visual`} fill sizes="330px" priority />
           <Icon size={46} />
           <strong>{service.title}</strong>
           <span>{service.audience}</span>
@@ -48,6 +52,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
       <section className="page-content">
+        <div className="section-inner service-image-story">
+          <Image src={serviceImage} alt={`${service.title} service pathway illustration`} fill sizes="(max-width: 980px) 100vw, 1180px" />
+          <div>
+            <span className="premium-eyebrow">Service pathway</span>
+            <h2>{service.title} guidance built around profile, paperwork and repayment comfort.</h2>
+            <p>{service.short}</p>
+          </div>
+        </div>
         <div className="section-inner service-detail-layout">
           <article className="page-panel service-decision-panel">
             <Icon size={38} />
