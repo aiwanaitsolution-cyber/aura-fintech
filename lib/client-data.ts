@@ -5,25 +5,21 @@ import {
   Building2,
   Calculator,
   Car,
-  CreditCard,
-  Factory,
-  GraduationCap,
   Handshake,
   Home,
   Landmark,
   Scale,
   ShieldCheck,
   TrendingUp,
-  UserRoundCheck
 } from "lucide-react";
 
 export const site = {
   name: "Aura Fintec Services",
   founder: "CA Ankita Garg",
   baseUrl: "https://aura-fintech.vercel.app",
-  phone: "+91 96500 23854",
+  phone: "9650023854",
   whatsapp: "919650023854",
-  email: "aurafintecservices@gmail.com",
+  email: "contact@aurafintechservice.com",
   city: "India",
   address: "Consultations available by appointment",
   tagline: "Loan syndication services, structured finance and strategic financial advisory for businesses ready to grow.",
@@ -76,22 +72,6 @@ export type Service = {
 };
 
 export const services: Service[] = [
-  {
-    slug: "personal-loan",
-    title: "Personal Loan",
-    short: "Flexible unsecured finance for planned expenses, emergencies, travel, education support and debt consolidation.",
-    audience: "Salaried and self-employed applicants",
-    amount: "Indicative lender range: Rs. 50,000 to Rs. 50 lakh",
-    tenure: "Typically 12 to 84 months",
-    rate: "Rates vary by lender, credit profile and income stability",
-    icon: UserRoundCheck,
-    highlights: ["Profile-led lender matching", "Transparent document checklist", "Balance transfer review available"],
-    documents: ["PAN and Aadhaar", "Salary slips or income proof", "Bank statements", "Employment or business proof"],
-    faqs: [
-      { q: "Does Aura guarantee approval?", a: "No. Approval is subject to lender policy, documentation, credit assessment and applicable terms." },
-      { q: "Will checking eligibility affect my credit score?", a: "The website estimate does not access credit bureaus. A lender application may involve bureau checks with consent." }
-    ]
-  },
   {
     slug: "business-loan",
     title: "Business Loan",
@@ -205,22 +185,6 @@ export const services: Service[] = [
     ]
   },
   {
-    slug: "education-loan",
-    title: "Education Loan",
-    short: "Funding support for higher education in India or abroad with co-applicant and collateral planning.",
-    audience: "Students and families",
-    amount: "Depends on course, institute, collateral and co-applicant profile",
-    tenure: "Moratorium and repayment terms vary by lender",
-    rate: "Education-loan pricing varies by course and risk profile",
-    icon: GraduationCap,
-    highlights: ["Course-cost planning", "Co-applicant review", "Collateral readiness where needed"],
-    documents: ["Admission proof", "Fee structure", "Student and co-applicant KYC", "Income documents"],
-    faqs: [
-      { q: "Can overseas education be covered?", a: "Several lenders support eligible overseas courses, subject to documentation and assessment." },
-      { q: "Is collateral mandatory?", a: "It depends on loan amount, institute, lender and applicant profile." }
-    ]
-  },
-  {
     slug: "working-capital-loan",
     title: "Working Capital Loan",
     short: "Cash-flow finance, OD/CC assistance and short-tenure facilities for operational business needs.",
@@ -250,38 +214,6 @@ export const services: Service[] = [
     faqs: [
       { q: "Is Udyam registration compulsory?", a: "It may not be compulsory for every product, but it helps identify MSME status." },
       { q: "Can GST data support eligibility?", a: "Yes, many lenders use GST turnover and bank statements as key assessment inputs." }
-    ]
-  },
-  {
-    slug: "professional-loan",
-    title: "Professional Loan",
-    short: "Loan assistance for doctors, CAs, architects, consultants and other qualified professionals.",
-    audience: "Qualified professionals and practices",
-    amount: "Depends on qualification, practice income and banking",
-    tenure: "Typically 12 to 84 months",
-    rate: "Profile and lender-program specific",
-    icon: BadgeIndianRupee,
-    highlights: ["Qualification-led lender matching", "Practice expansion finance", "Equipment add-on review"],
-    documents: ["Professional qualification proof", "KYC", "ITR/bank statements", "Practice proof"],
-    faqs: [
-      { q: "Can professionals apply without collateral?", a: "Some programs may be unsecured, subject to profile and lender terms." },
-      { q: "Can clinic expansion be financed?", a: "Yes, business use cases such as clinic expansion can be evaluated." }
-    ]
-  },
-  {
-    slug: "machinery-loan",
-    title: "Machinery Loan",
-    short: "Equipment and machinery funding support for manufacturers, workshops and asset-heavy businesses.",
-    audience: "Manufacturers and production-led SMEs",
-    amount: "Based on machinery cost and business cash flow",
-    tenure: "Asset-life and lender policy driven",
-    rate: "Secured asset-finance terms vary by lender",
-    icon: Factory,
-    highlights: ["Quotation-led assessment", "New and used equipment scenarios", "Cash-flow fit review"],
-    documents: ["Machinery quotation", "Business KYC", "Financials/GST", "Bank statements"],
-    faqs: [
-      { q: "Can imported machinery be financed?", a: "Some lenders consider it with adequate invoices, duties, valuation and business documentation." },
-      { q: "Is margin money required?", a: "Most asset finance requires borrower contribution based on lender policy." }
     ]
   },
   {
@@ -315,38 +247,6 @@ export const services: Service[] = [
       { q: "When does balance transfer make sense?", a: "Usually when interest savings exceed processing, legal, valuation and foreclosure costs." },
       { q: "Can EMI reduce after transfer?", a: "It may reduce if rate or tenure changes, but total cost must be reviewed carefully." }
     ]
-  },
-  {
-    slug: "credit-card-assistance",
-    title: "Credit Card Assistance",
-    short: "Credit-card selection and application support based on profile, spends and eligibility.",
-    audience: "Salaried, self-employed and business users",
-    amount: "Card limit is lender and profile dependent",
-    tenure: "Revolving credit product, not a term loan",
-    rate: "Charges vary by issuer and usage behavior",
-    icon: CreditCard,
-    highlights: ["Profile and use-case matching", "Document readiness", "Responsible usage guidance"],
-    documents: ["KYC", "Income proof", "Bank statements", "Existing card details if any"],
-    faqs: [
-      { q: "Does Aura issue credit cards?", a: "No. Cards are issued by banks or issuers subject to their approval." },
-      { q: "Can rejected applicants reapply?", a: "Yes, but after understanding rejection reasons and improving eligibility where possible." }
-    ]
-  },
-  {
-    slug: "insurance-assistance",
-    title: "Insurance Assistance",
-    short: "Placeholder page for insurance support; publish only after the client confirms this service is offered.",
-    audience: "Client confirmation required",
-    amount: "Not applicable",
-    tenure: "Policy-specific",
-    rate: "Premium depends on insurer and product",
-    icon: ShieldCheck,
-    highlights: ["Service requires confirmation", "No insurer partnership claimed", "Disclosure-led guidance"],
-    documents: ["Client to confirm requirements"],
-    faqs: [
-      { q: "Is this service confirmed?", a: "No. This page is intentionally marked client-dependent until Aura confirms insurance assistance." },
-      { q: "Are insurer partnerships claimed?", a: "No partnerships are claimed on this website without confirmation." }
-    ]
   }
 ];
 
@@ -372,13 +272,13 @@ export const partners = [
 export const audienceSolutions = [
   {
     label: "Salaried Professionals",
-    recommended: ["Personal Loan", "Home Loan", "Credit Card Assistance"],
+    recommended: ["Business Loan", "Home Loan", "Balance Transfer"],
     benefits: ["Salary-led eligibility review", "EMI comfort planning", "Balance-transfer opportunities"],
     requirements: ["PAN/Aadhaar", "Salary slips", "Bank statements", "Employer details"]
   },
   {
     label: "Self-Employed Professionals",
-    recommended: ["Professional Loan", "Business Loan", "Vehicle Loan"],
+    recommended: ["Business Loan", "Vehicle Loan", "Project Finance"],
     benefits: ["Practice-income assessment", "Qualification-led lender fit", "Expansion-use planning"],
     requirements: ["Qualification proof", "ITR", "Bank statements", "Practice proof"]
   },
@@ -390,13 +290,13 @@ export const audienceSolutions = [
   },
   {
     label: "Manufacturers",
-    recommended: ["Machinery Loan", "Working Capital Loan", "Project Finance"],
+    recommended: ["Working Capital Loan", "Project Finance", "Business Loan"],
     benefits: ["Asset finance planning", "Stock/debtor cycle review", "Project viability checklist"],
     requirements: ["Machinery quotation", "Financials", "GST", "Collateral papers where required"]
   },
   {
     label: "Startups",
-    recommended: ["Business Loan", "Professional Loan", "Credit Card Assistance"],
+    recommended: ["Business Loan", "Working Capital Loan", "Project Finance"],
     benefits: ["Founder-profile review", "Banking-led readiness", "Responsible debt sizing"],
     requirements: ["Entity proof", "Bank statements", "Founder KYC", "Revenue proof if available"]
   },
@@ -424,7 +324,7 @@ export const faqs = [
 
 export const testimonials = [
   { name: "Business owner", role: "MSME borrower", text: "Aura helped us understand the documents lenders usually ask for and compare repayment scenarios before applying.", status: "Placeholder testimonial - client approval required" },
-  { name: "Salaried professional", role: "Personal loan applicant", text: "The advisory conversation made the EMI and tenure trade-offs much clearer.", status: "Placeholder testimonial - client approval required" },
+  { name: "Salaried professional", role: "Loan applicant", text: "The advisory conversation made the EMI and tenure trade-offs much clearer.", status: "Placeholder testimonial - client approval required" },
   { name: "Property owner", role: "LAP inquiry", text: "The balance-transfer estimate helped us decide whether switching lenders was worth exploring.", status: "Placeholder testimonial - client approval required" }
 ];
 

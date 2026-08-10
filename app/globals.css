@@ -68,18 +68,50 @@ textarea {
   left: 0;
   z-index: 40;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 78px;
-  padding: 12px clamp(18px, 5vw, 72px);
+  flex-direction: column;
   background: rgba(255, 255, 255, 0.88);
   border-bottom: 1px solid rgba(219, 229, 239, 0.82);
   backdrop-filter: blur(18px);
   transition: background 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
 }
 
+.header-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  padding: 9px clamp(18px, 5vw, 72px);
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-bottom: 1px solid rgba(219, 229, 239, 0.82);
+  background: rgba(250, 250, 247, 0.92);
+}
+
+.header-topbar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--primary);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px clamp(18px, 5vw, 72px);
+}
+
 .site-header.over-hero {
   background: linear-gradient(180deg, rgba(2, 13, 31, 0.68), rgba(2, 13, 31, 0.08));
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.site-header.over-hero .header-topbar {
+  background: rgba(2, 13, 31, 0.42);
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -111,7 +143,8 @@ textarea {
 
 .site-header.over-hero .desktop-nav a,
 .site-header.over-hero .nav-menu-button,
-.site-header.over-hero .mobile-toggle {
+.site-header.over-hero .mobile-toggle,
+.site-header.over-hero .header-topbar a {
   color: #fff;
   text-shadow: 0 1px 18px rgba(0, 0, 0, 0.38);
 }
@@ -1229,9 +1262,48 @@ textarea {
 .about-experience {
   position: relative;
   overflow: hidden;
+  background: #041b38;
+}
+
+.about-experience::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background:
-    radial-gradient(circle at 12% 8%, rgba(242,140,24,.1), transparent 22rem),
-    linear-gradient(180deg, #fff, #f5f8fc 54%, #fff);
+    linear-gradient(180deg, rgba(4, 27, 56, 0.52), rgba(4, 27, 56, 0.7) 48%, rgba(245, 248, 252, 0.92)),
+    radial-gradient(circle at 10% 12%, rgba(242, 140, 24, 0.24), transparent 24rem),
+    radial-gradient(circle at 90% 8%, rgba(255, 255, 255, 0.18), transparent 28rem);
+  pointer-events: none;
+}
+
+.about-experience::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 74%);
+  pointer-events: none;
+}
+
+.about-section-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .74;
+  filter: saturate(.94) contrast(1.08);
+}
+
+.about-experience > .section-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .founder-visual-story {
@@ -1306,11 +1378,11 @@ textarea {
   padding: clamp(24px, 4vw, 46px);
   overflow: hidden;
   color: #fff;
-  background: rgba(4,27,56,.52);
-  border: 1px solid rgba(255,255,255,.18);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255,255,255,.28);
   border-radius: 22px;
-  box-shadow: 0 34px 90px rgba(0,0,0,.22);
-  backdrop-filter: blur(16px);
+  box-shadow: 0 34px 100px rgba(0,0,0,.28);
+  backdrop-filter: blur(22px) saturate(1.18);
 }
 
 .sticky-about-background::after {
@@ -1319,20 +1391,9 @@ textarea {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(135deg, rgba(4,27,56,.92), rgba(4,27,56,.55)),
-    radial-gradient(circle at 88% 16%, rgba(242,140,24,.24), transparent 20rem);
+    linear-gradient(135deg, rgba(4,27,56,.76), rgba(4,27,56,.46)),
+    radial-gradient(circle at 88% 16%, rgba(242,140,24,.28), transparent 20rem);
   pointer-events: none;
-}
-
-.sticky-about-background .about-section-video {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: .72;
-  filter: saturate(.92) contrast(1.08);
 }
 
 .about-background-content {
@@ -1343,25 +1404,29 @@ textarea {
   min-height: inherit;
 }
 
-.about-background-content h2 {
+.about-background-content h2,
+.about-glass-title {
   max-width: 780px;
   margin: 0 0 14px;
-  color: #fff;
+  color: #fff !important;
+  text-shadow: 0 16px 40px rgba(0,0,0,.32);
   font-size: clamp(2.3rem, 5vw, 5.8rem);
   line-height: .96;
 }
 
-.about-background-content > p {
+.about-background-content > p,
+.about-glass-intro {
   max-width: 620px;
-  color: rgba(255,255,255,.76);
+  color: rgba(255,255,255,.86) !important;
   font-size: 1.08rem;
   line-height: 1.7;
 }
 
 .sticky-about-background .mission-vision-grid div {
-  background: rgba(255,255,255,.1);
-  border-color: rgba(255,255,255,.16);
-  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,.16);
+  border-color: rgba(255,255,255,.26);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+  backdrop-filter: blur(18px) saturate(1.2);
 }
 
 .sticky-about-background .mission-vision-grid strong {
@@ -1369,7 +1434,7 @@ textarea {
 }
 
 .sticky-about-background .mission-vision-grid span {
-  color: rgba(255,255,255,.72);
+  color: rgba(255,255,255,.82);
 }
 
 .sticky-story-section {
@@ -1392,12 +1457,12 @@ textarea {
   padding: clamp(24px, 5vw, 46px);
   color: #fff;
   background:
-    radial-gradient(circle at 100% 0%, rgba(242,140,24,.26), transparent 14rem),
-    linear-gradient(135deg, rgba(4,27,56,.74), rgba(8,45,92,.48));
-  border: 1px solid rgba(255,255,255,.18);
+    radial-gradient(circle at 100% 0%, rgba(242,140,24,.3), transparent 14rem),
+    linear-gradient(135deg, rgba(4,27,56,.8), rgba(8,45,92,.52));
+  border: 1px solid rgba(255,255,255,.26);
   border-radius: 22px;
   box-shadow: 0 26px 80px rgba(0,0,0,.2);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(20px) saturate(1.15);
   animation: riseIn .55s ease both;
 }
 
@@ -1411,9 +1476,10 @@ textarea {
   font-size: clamp(2rem, 4vw, 4rem);
 }
 
-.story-overlay-card p {
+.story-overlay-card p,
+.story-overlay-copy {
   max-width: 540px;
-  color: rgba(255,255,255,.76);
+  color: rgba(255,255,255,.88) !important;
   line-height: 1.7;
 }
 
@@ -1910,6 +1976,25 @@ blockquote {
 .service-card p {
   color: var(--muted);
   line-height: 1.7;
+}
+
+.about-experience .about-background-content h2,
+.about-experience .story-overlay-card h3 {
+  color: #fff;
+}
+
+.about-experience .about-background-content h2 {
+  font-size: clamp(2.3rem, 5vw, 5.8rem);
+  line-height: .96;
+}
+
+.about-experience .about-background-content > p {
+  color: rgba(255,255,255,.86);
+}
+
+.about-experience .mission-vision-grid span,
+.about-experience .story-overlay-card p {
+  color: rgba(255,255,255,.86);
 }
 
 .grid-3 {

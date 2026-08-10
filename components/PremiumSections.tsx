@@ -138,7 +138,7 @@ export function AnimatedMetrics() {
 
 export function BentoServiceGrid() {
   const featured = services.filter((service) =>
-    ["business-loan", "personal-loan", "home-loan", "loan-against-property", "msme-loan", "working-capital-loan"].includes(service.slug)
+    ["business-loan", "home-loan", "loan-against-property", "msme-loan", "working-capital-loan", "project-finance"].includes(service.slug)
   );
   return (
     <section className="premium-section">

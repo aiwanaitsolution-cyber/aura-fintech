@@ -13,15 +13,15 @@ export default function AboutPage() {
     <main>
       <section className="page-hero"><span className="eyebrow">About Aura</span><h1>Loan syndication services and financial advisory for ambitious businesses.</h1><p>{site.tagline}</p></section>
       <section className="page-content about-experience">
+        <video className="about-section-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-loan-syndication.jpeg" aria-hidden="true">
+          <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
+        </video>
         <div className="section-inner sticky-story-section">
           <div className="about-story-card sticky-about-background">
-            <video className="about-section-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-loan-syndication.jpeg" aria-hidden="true">
-              <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
-            </video>
             <div className="about-background-content">
               <span className="premium-eyebrow">What Aura does</span>
-              <h2>Finance made easier to see, prepare and discuss.</h2>
-              <p>Aura turns loan requirements into a clear path: profile, documents, lender fit and next action.</p>
+              <h2 className="about-glass-title">Finance made easier to see, prepare and discuss.</h2>
+              <p className="about-glass-intro">Aura turns loan requirements into a clear path: profile, documents, lender fit and next action.</p>
               <div className="mission-vision-grid">
                 <div><Target size={24} /><strong>Mission</strong><span>Simplify complex finance decisions for businesses and families.</span></div>
                 <div><Eye size={24} /><strong>Vision</strong><span>Help clients grow with disciplined, lender-ready financial choices.</span></div>
@@ -40,7 +40,7 @@ export default function AboutPage() {
               <article key={step} className="story-overlay-card">
                 <span>{step}</span>
                 <h3>{title}</h3>
-                <p>{text}</p>
+                <p className="story-overlay-copy">{text}</p>
               </article>
             ))}
           </div>

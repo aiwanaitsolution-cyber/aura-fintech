@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Calculator, ChevronDown, Menu, MessageCircle, Phone, X } from "lucide-react";
+import { BookOpen, Calculator, ChevronDown, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { blogPosts, calculators, services, site } from "@/lib/client-data";
 
 const mainLinks = [
@@ -68,42 +68,54 @@ export function Header() {
   return (
     <>
       <header className={`site-header ${isHome && !scrolled ? "over-hero" : "is-solid"}`}>
-        <Link className="logo-link" href="/" aria-label="Aura Fintec Services home">
-          <Image src="/assets/aura-logo.svg" alt="Aura Fintec Services logo" width={210} height={58} priority />
-        </Link>
-        <nav className="desktop-nav" aria-label="Primary navigation" onMouseLeave={scheduleClose} onMouseEnter={() => closeTimer.current && clearTimeout(closeTimer.current)}>
-          {mainLinks.map((link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
+        <div className="header-topbar">
+          <a href={`tel:${site.phone.replace(/\s/g, "")}`}>
+            <Phone size={14} />
+            <span>{site.phone}</span>
+          </a>
+          <a href={`mailto:${site.email}`}>
+            <Mail size={14} />
+            <span>{site.email}</span>
+          </a>
+        </div>
+        <div className="header-main">
+          <Link className="logo-link" href="/" aria-label="Aura Fintec Services home">
+            <Image src="/assets/aura-logo.svg" alt="Aura Fintec Services logo" width={210} height={58} priority />
+          </Link>
+          <nav className="desktop-nav" aria-label="Primary navigation" onMouseLeave={scheduleClose} onMouseEnter={() => closeTimer.current && clearTimeout(closeTimer.current)}>
+            {mainLinks.map((link) => (
+              <Link key={link.href} href={link.href}>
+                {link.label}
+              </Link>
+            ))}
+            <button className="nav-menu-button" onMouseEnter={() => openMenu("services")} onFocus={() => openMenu("services")} onClick={() => menu === "services" && pinnedMenu ? closeMenu() : openMenu("services", true)} aria-expanded={menu === "services"}>
+              Services <ChevronDown size={16} aria-hidden />
+            </button>
+            <button className="nav-menu-button" onMouseEnter={() => openMenu("calculators")} onFocus={() => openMenu("calculators")} onClick={() => menu === "calculators" && pinnedMenu ? closeMenu() : openMenu("calculators", true)} aria-expanded={menu === "calculators"}>
+              Calculators <ChevronDown size={16} aria-hidden />
+            </button>
+            <button className="nav-menu-button" onMouseEnter={() => openMenu("resources")} onFocus={() => openMenu("resources")} onClick={() => menu === "resources" && pinnedMenu ? closeMenu() : openMenu("resources", true)} aria-expanded={menu === "resources"}>
+              Resources <ChevronDown size={16} aria-hidden />
+            </button>
+            <AnimatePresence>{menu && <MegaMenu type={menu} close={closeMenu} keepOpen={() => closeTimer.current && clearTimeout(closeTimer.current)} scheduleClose={scheduleClose} />}</AnimatePresence>
+          </nav>
+          <div className="header-actions">
+            <Link className="icon-link" href="/calculators/emi-calculator" aria-label="Open EMI calculator">
+              <Calculator size={19} />
             </Link>
-          ))}
-          <button className="nav-menu-button" onMouseEnter={() => openMenu("services")} onFocus={() => openMenu("services")} onClick={() => menu === "services" && pinnedMenu ? closeMenu() : openMenu("services", true)} aria-expanded={menu === "services"}>
-            Services <ChevronDown size={16} aria-hidden />
-          </button>
-          <button className="nav-menu-button" onMouseEnter={() => openMenu("calculators")} onFocus={() => openMenu("calculators")} onClick={() => menu === "calculators" && pinnedMenu ? closeMenu() : openMenu("calculators", true)} aria-expanded={menu === "calculators"}>
-            Calculators <ChevronDown size={16} aria-hidden />
-          </button>
-          <button className="nav-menu-button" onMouseEnter={() => openMenu("resources")} onFocus={() => openMenu("resources")} onClick={() => menu === "resources" && pinnedMenu ? closeMenu() : openMenu("resources", true)} aria-expanded={menu === "resources"}>
-            Resources <ChevronDown size={16} aria-hidden />
-          </button>
-          <AnimatePresence>{menu && <MegaMenu type={menu} close={closeMenu} keepOpen={() => closeTimer.current && clearTimeout(closeTimer.current)} scheduleClose={scheduleClose} />}</AnimatePresence>
-        </nav>
-        <div className="header-actions">
-          <Link className="icon-link" href="/calculators/emi-calculator" aria-label="Open EMI calculator">
-            <Calculator size={19} />
-          </Link>
-          <a className="ghost-button compact" href={`tel:${site.phone.replace(/\s/g, "")}`}>
-            <Phone size={16} /> Call
-          </a>
-          <a className="ghost-button compact" href={whatsappUrl} target="_blank" rel="noreferrer">
-            <MessageCircle size={16} /> WhatsApp
-          </a>
-          <Link className="primary-button compact" href="/apply-now">
-            Apply Now
-          </Link>
-          <button className="mobile-toggle" onClick={() => setOpen(true)} aria-label="Open navigation">
-            <Menu />
-          </button>
+            <a className="ghost-button compact" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+              <Phone size={16} /> Call
+            </a>
+            <a className="ghost-button compact" href={whatsappUrl} target="_blank" rel="noreferrer">
+              <MessageCircle size={16} /> WhatsApp
+            </a>
+            <Link className="primary-button compact" href="/apply-now">
+              Apply Now
+            </Link>
+            <button className="mobile-toggle" onClick={() => setOpen(true)} aria-label="Open navigation">
+              <Menu />
+            </button>
+          </div>
         </div>
       </header>
       {open && (

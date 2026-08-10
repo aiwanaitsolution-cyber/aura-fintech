@@ -14,7 +14,7 @@ export default function FinancialServicesPage() {
   return (
     <main>
       <section className="page-hero service-overview-hero">
-        <div><span className="eyebrow">All services</span><h1>Loan syndication, structured finance and advisory solutions.</h1><p>Explore finance pathways for housing loans, LAP, business loans, surety-style support, working capital, project finance, equipment funding and MSME growth.</p></div>
+        <div><span className="eyebrow">All services</span><h1>Loan syndication, structured finance and advisory solutions.</h1><p>Explore finance pathways for housing loans, LAP, business loans, surety-style support, working capital, project finance and MSME growth.</p></div>
         <div className="service-overview-image"><Image src="/assets/aura-fintec-profile.jpeg" alt="Aura Fintec Services profile and loan products" width={1254} height={1254} priority /></div>
       </section>
       <section className="page-content services-showcase">
