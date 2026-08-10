@@ -46,7 +46,7 @@ export default function FinancialServicesPage() {
             );
           })}
         </div>
-        <div className="section-inner calculator-hub">
+        <div className="section-inner calculator-hub" id="calculators">
           <div className="section-head">
             <span className="eyebrow">Planning tools</span>
             <h2>Calculator tools now live inside the services area.</h2>

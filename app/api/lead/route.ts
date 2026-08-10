@@ -19,6 +19,16 @@ const schema = z.object({
   submittedAt: z.string().optional()
 });
 
+const simpleSchema = z.object({
+  name: z.string().min(2),
+  mobile: z.string().regex(/^[6-9]\d{9}$/),
+  email: z.string().email(),
+  enquiry: z.string().min(5),
+  website: z.string().optional(),
+  sourcePath: z.string().optional(),
+  submittedAt: z.string().optional()
+});
+
 const recent = new Map<string, number>();
 
 export async function POST(request: Request) {
@@ -30,17 +40,27 @@ export async function POST(request: Request) {
 
   const body = await request.json().catch(() => null);
   const parsed = schema.safeParse(body);
-  if (!parsed.success || parsed.data.website) {
+  const simpleParsed = simpleSchema.safeParse(body);
+  if ((!parsed.success && !simpleParsed.success) || (parsed.success && parsed.data.website) || (simpleParsed.success && simpleParsed.data.website)) {
     return NextResponse.json({ ok: false, error: "Invalid inquiry." }, { status: 400 });
   }
   recent.set(ip, Date.now());
 
-  const lead = {
-    ...parsed.data,
-    receivedAt: new Date().toISOString(),
-    utmReady: true,
-    crmReady: true
-  };
+  const lead = parsed.success
+    ? {
+        ...parsed.data,
+        receivedAt: new Date().toISOString(),
+        utmReady: true,
+        crmReady: true,
+        kind: "full"
+      }
+    : {
+        ...simpleParsed.data,
+        receivedAt: new Date().toISOString(),
+        utmReady: true,
+        crmReady: true,
+        kind: "simple"
+      };
 
   console.info("Aura lead received", lead);
   return NextResponse.json({ ok: true });

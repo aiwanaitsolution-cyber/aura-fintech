@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { calculators, services, site } from "@/lib/client-data";
+import { site } from "@/lib/client-data";
 
 export function Footer() {
-  const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Aura Fintec Services, I want guidance for a loan or finance requirement.")}`;
-
   return (
     <footer className="site-footer premium-footer">
       <div className="footer-grid">
@@ -25,35 +23,17 @@ export function Footer() {
           <p className="fineprint">{site.unverifiedNote}</p>
         </div>
         <div>
-          <h2>Services</h2>
-          {services.slice(0, 8).map((service) => (
-            <Link key={service.slug} href={`/services/${service.slug}`}>
-              {service.title}
-            </Link>
-          ))}
-        </div>
-        <div>
-          <h2>Calculators</h2>
-          {calculators.map((calculator) => (
-            <Link key={calculator.slug} href={`/calculators/${calculator.slug}`}>
-              {calculator.title}
-            </Link>
-          ))}
-          <Link href="/faq">FAQs</Link>
-          <Link href="/sitemap">Sitemap</Link>
-        </div>
-        <div>
           <h2>Company</h2>
           <Link href="/about-us">About Aura</Link>
-          <Link href="/about-us#founder">Founder</Link>
+          <Link href="/founder">Founder</Link>
           <Link href="/lending-partners">Lending Partners</Link>
-          <Link href="/become-a-partner">Become a Partner</Link>
+          <Link href="/faq">FAQs</Link>
+          <Link href="/sitemap">Sitemap</Link>
         </div>
         <div>
           <h2>Contact</h2>
           <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
           <a href={`mailto:${site.email}`}>{site.email}</a>
-          <a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp consultation</a>
           <p>{site.address}</p>
           <Link className="primary-button" href="/apply-now">
             Start Application

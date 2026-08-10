@@ -13,7 +13,7 @@ export function FounderNudge() {
 
   return (
     <aside className="founder-nudge" aria-label="Founder note">
-      <Link href="/about-us#founder" className="founder-nudge-link">
+      <Link href="/founder" className="founder-nudge-link">
         <span className="founder-nudge-photo">
           <Image src="/assets/ankita-garg.png" alt="CA Ankita Garg" width={96} height={96} />
         </span>

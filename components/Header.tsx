@@ -2,23 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, ChevronDown, Facebook, Instagram, Linkedin, Mail, Menu, MessageCircle, Phone, Twitter, X } from "lucide-react";
+import { BookOpen, ChevronDown, Facebook, Instagram, Linkedin, Mail, Menu, Phone, Twitter, X } from "lucide-react";
 import { blogPosts, services, site } from "@/lib/client-data";
 
 export function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<"about" | "services" | "resources" | null>(null);
   const [pinnedMenu, setPinnedMenu] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const isHome = pathname === "/";
-
-  const whatsappMessage = encodeURIComponent("Hello Aura Fintec Services, I want guidance for a loan or finance requirement.");
-  const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${whatsappMessage}`;
 
   function openMenu(nextMenu: "about" | "services" | "resources", pinned = false) {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -38,13 +34,6 @@ export function Header() {
   }
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
     if (!open) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -60,7 +49,7 @@ export function Header() {
 
   return (
     <>
-      <header className={`site-header ${isHome && !scrolled ? "over-hero" : "is-solid"}`}>
+      <header className="site-header is-solid">
         <div className="header-topbar">
           <div className="header-socials" aria-label="Social links">
             <a href={site.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
@@ -111,12 +100,9 @@ export function Header() {
             <AnimatePresence>{menu && <MegaMenu type={menu} close={closeMenu} keepOpen={() => closeTimer.current && clearTimeout(closeTimer.current)} scheduleClose={scheduleClose} />}</AnimatePresence>
           </nav>
           <div className="header-actions">
-            <a className="ghost-button compact" href={`tel:${site.phone.replace(/\s/g, "")}`}>
-              <Phone size={16} /> Call
-            </a>
-            <a className="ghost-button compact" href={whatsappUrl} target="_blank" rel="noreferrer">
-              <MessageCircle size={16} /> WhatsApp
-            </a>
+            <Link className="ghost-button compact" href="/financial-services#calculators">
+              Calculator
+            </Link>
             <Link className="primary-button compact" href="/apply-now">
               Apply Now
             </Link>
@@ -147,7 +133,7 @@ export function Header() {
           ))}
           <div className="mobile-section-title">About</div>
           <Link href="/about-us" onClick={() => setOpen(false)}>About Aura</Link>
-          <Link href="/about-us#founder" onClick={() => setOpen(false)}>Founder</Link>
+          <Link href="/founder" onClick={() => setOpen(false)}>Founder</Link>
           <div className="mobile-section-title">Loan Products</div>
           {services.map((service) => (
             <Link key={service.slug} href={`/services/${service.slug}`} onClick={() => setOpen(false)}>
@@ -174,7 +160,7 @@ function MegaMenu({ type, close, keepOpen, scheduleClose }: { type: "about" | "s
         {type === "about" && (
           <>
             <Link href="/about-us" onClick={close}><BookOpen size={18} /><span>About Aura<small>Company story and service approach</small></span></Link>
-            <Link href="/about-us#founder" onClick={close}><BookOpen size={18} /><span>Founder<small>CA Ankita Garg profile</small></span></Link>
+            <Link href="/founder" onClick={close}><BookOpen size={18} /><span>Founder<small>CA Ankita Garg profile</small></span></Link>
           </>
         )}
         {type === "services" && services.map((service) => {

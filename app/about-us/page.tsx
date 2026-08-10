@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck } from "lucide-react";
-import { FounderSection } from "@/components/FounderSection";
 import { services, site } from "@/lib/client-data";
 
 export const metadata: Metadata = {
@@ -46,7 +45,6 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-        <FounderSection />
         <div className="section-inner service-strip" aria-label="Featured loan services">
           <div>
           {[...services.slice(0, 8), ...services.slice(0, 8)].map((service, index) => {

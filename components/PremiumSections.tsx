@@ -296,7 +296,7 @@ export function FounderSpotlight() {
         <p>{clientPlaceholders.founderBio}</p>
         <p>{clientPlaceholders.founderExtended}</p>
         <blockquote>Financial guidance should simplify complexity and help businesses grow with discipline.</blockquote>
-        <Link className="primary-button" href="/about-us#founder">Read founder profile</Link>
+        <Link className="primary-button" href="/founder">Read founder profile</Link>
       </div>
     </section>
   );

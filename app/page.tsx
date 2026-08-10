@@ -5,10 +5,8 @@ import {
   BlogShowcase,
   DocumentChecklist,
   EmiPreview,
-  FounderSpotlight,
   PremiumCTA,
   PremiumHero,
-  TrustLogoMarquee
 } from "@/components/PremiumSections";
 import { faqs } from "@/lib/client-data";
 
@@ -16,11 +14,9 @@ export default function HomePage() {
   return (
     <main>
       <PremiumHero />
-      <TrustLogoMarquee />
       <BentoServiceGrid />
       <AudienceTabs />
       <EmiPreview />
-      <FounderSpotlight />
       <DocumentChecklist />
       <BlogShowcase />
       <section className="premium-section faq-premium">
