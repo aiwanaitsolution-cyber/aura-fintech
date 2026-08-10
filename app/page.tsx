@@ -1,4 +1,5 @@
 import { FAQ } from "@/components/FAQ";
+import { AssociationLogoMarquee } from "@/components/AssociationLogoMarquee";
 import {
   AudienceTabs,
   BentoServiceGrid,
@@ -19,6 +20,7 @@ export default function HomePage() {
       <EmiPreview />
       <DocumentChecklist />
       <BlogShowcase />
+      <AssociationLogoMarquee />
       <section className="premium-section faq-premium">
         <div className="section-head split">
           <div>

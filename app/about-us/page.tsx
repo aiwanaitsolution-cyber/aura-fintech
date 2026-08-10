@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck } from "lucide-react";
+import { AssociationLogoMarquee } from "@/components/AssociationLogoMarquee";
 import { services, site } from "@/lib/client-data";
 
 export const metadata: Metadata = {
@@ -58,6 +59,9 @@ export default function AboutPage() {
             );
           })}
           </div>
+        </div>
+        <div className="section-inner">
+          <AssociationLogoMarquee compact />
         </div>
       </section>
     </main>
