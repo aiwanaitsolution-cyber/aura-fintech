@@ -1,40 +1,92 @@
 import type { Metadata } from "next";
-import { BadgeCheck, Building2, FileSearch, Handshake, Landmark, Network, ShieldCheck, WalletCards } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, BadgeIndianRupee, Banknote, Building2, FileCheck2, HandCoins, Landmark, Network, TrendingUp } from "lucide-react";
+import { AssociationLogoMarquee, associationLogos } from "@/components/AssociationLogoMarquee";
 import { Reveal } from "@/components/Reveal";
-import { partners, site } from "@/lib/client-data";
 
 export const metadata: Metadata = {
   title: "Lending Partners",
-  description: "Lender ecosystem categories for Aura Fintec Services loan syndication and financial advisory."
+  description: "Aura Fintec Services lending partner ecosystem across banks, NBFCs and specialist finance channels."
 };
 
-const partnerIcons = [Landmark, Building2, Handshake, Network, WalletCards, ShieldCheck, FileSearch, BadgeCheck];
-const partnerDescriptions = [
-  "Public and private banking channels that may fit eligible retail, mortgage and business cases.",
-  "Non-banking finance companies for profile-led, asset-led and business lending programs.",
-  "Private credit or specialist funding routes considered only where compliant and suitable.",
-  "Specialist desks for structured borrowings, syndication support and larger business requirements.",
-  "Providers aligned to OD, CC, receivables and operational liquidity use cases.",
-  "Asset and equipment finance channels for machinery, vehicles and productive business assets.",
-  "Teams that review project viability, promoter contribution, collateral and cash-flow assumptions.",
-  "Assessment support categories that help organize documents, banking data and risk inputs."
+const partnerTiers = [
+  {
+    label: "Public sector banks",
+    count: "04",
+    names: ["Bank of Baroda", "Canara Bank", "State Bank of India", "Saraswat Bank"],
+    icon: Landmark
+  },
+  {
+    label: "Private and global banks",
+    count: "07",
+    names: ["HDFC Bank", "ICICI Bank", "Axis Bank", "Kotak Mahindra Bank", "IDFC First Bank", "IndusInd Bank", "Deutsche Bank"],
+    icon: Building2
+  },
+  {
+    label: "NBFC and specialist finance",
+    count: "05",
+    names: ["AU Small Finance Bank", "Bajaj Finserv", "Aditya Birla Finance", "Ambit Finvest", "Jio Credit"],
+    icon: Network
+  }
 ];
-const lenderLogoStrip = ["Bank", "NBFC", "Private Credit", "Working Capital", "Asset Finance", "Project Finance", "Credit Desk", "Structured Desk"];
+
+const financeRoutes = [
+  {
+    title: "Business growth funding",
+    text: "Term loans, working capital, project funding and structured finance conversations prepared around business cash flow.",
+    icon: TrendingUp
+  },
+  {
+    title: "Retail and property finance",
+    text: "Home loans, loan against property, vehicle finance and personal borrowing discussions organized with documents first.",
+    icon: Banknote
+  },
+  {
+    title: "Collateral and asset routes",
+    text: "Machinery, equipment, secured property and receivable-backed cases mapped to the right lender category.",
+    icon: HandCoins
+  },
+  {
+    title: "Credit-ready documentation",
+    text: "KYC, banking, ITR, GST, financials and purpose notes shaped into a clearer lender-review file.",
+    icon: FileCheck2
+  }
+];
 
 export default function PartnersPage() {
+  const featuredLogos = associationLogos.slice(0, 16);
+
   return (
     <main>
-      <section className="page-hero lender-hero">
-        <span className="eyebrow">Lending ecosystem</span>
-        <h1>Finance channels organized by business need, profile and documentation.</h1>
-        <p>Aura presents lender categories only. Official institution names and logos should be added after relationship confirmation and usage approval.</p>
+      <section className="page-hero lender-hero partner-hero-redesign">
+        <div className="partner-hero-copy">
+          <span className="eyebrow">Lending ecosystem</span>
+          <h1>Recognised finance names, organized into a clearer borrower pathway.</h1>
+          <p>Aura helps clients prepare profile, documents and funding discussions across banks, NBFCs and specialist finance channels.</p>
+          <div className="partner-hero-actions">
+            <a href="#partner-logo-wall">View institutions <ArrowRight size={17} /></a>
+            <a href="/apply-now">Start a loan discussion</a>
+          </div>
+        </div>
+        <div className="partner-hero-orbit" aria-label="Featured lending associations">
+          {featuredLogos.slice(0, 8).map((logo, index) => (
+            <div className={`partner-orbit-logo orbit-logo-${index + 1}`} key={logo.name}>
+              <Image src={logo.src} alt={`${logo.name} logo`} width={104} height={52} />
+            </div>
+          ))}
+          <div className="partner-orbit-core">
+            <BadgeIndianRupee size={36} />
+            <strong>Aura</strong>
+            <span>Lender-ready coordination</span>
+          </div>
+        </div>
       </section>
       <section className="page-content lender-section">
         <div className="section-inner lender-visual-hero">
           <div>
-            <span className="premium-eyebrow">Lender map</span>
-            <h2>From borrower profile to suitable finance channel.</h2>
-            <p>Each category below represents a route Aura can evaluate after reviewing documents, use case, repayment comfort and lender policy.</p>
+            <span className="premium-eyebrow">Association map</span>
+            <h2>Partners shown visually, not buried in placeholder text.</h2>
+            <p>Borrowers can quickly see the finance ecosystem Aura works around: public banks, private banks, NBFCs and specialist finance names.</p>
           </div>
           <div className="lender-image-stage">
             <video autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-fintec-profile.jpeg" aria-label="Business meeting video representing lender partner coordination">
@@ -45,40 +97,63 @@ export default function PartnersPage() {
             <div className="orbit orbit-three">Lender fit</div>
           </div>
         </div>
-        <div className="section-inner lender-intro">
-          <div>
-            <span className="eyebrow">Verification-safe</span>
-            <h2>Built for clarity without claiming unverified partnerships.</h2>
+
+        <div id="partner-logo-wall" className="section-inner partner-logo-wall">
+          <div className="partner-wall-head">
+            <span className="premium-eyebrow">Our lending associations</span>
+            <h2>Banking and finance brands displayed with clear visual hierarchy.</h2>
           </div>
-          <p>Use these categories to explain the finance ecosystem while Aura finalizes approved lender relationships, logo permissions and partner disclosures.</p>
+          <div className="partner-logo-grid" aria-label="Aura lending partner logos">
+            {featuredLogos.map((logo, index) => (
+              <Reveal className={`partner-logo-tile partner-tile-${index % 4}`} key={logo.name}>
+                <a href={logo.href} target="_blank" rel="noreferrer">
+                  <Image src={logo.src} alt={`${logo.name} logo`} width={156} height={78} />
+                  <strong>{logo.name}</strong>
+                  <span>{index < 12 ? "Banking channel" : "Finance channel"}</span>
+                </a>
+              </Reveal>
+            ))}
+          </div>
         </div>
-        <div className="section-inner lender-grid">
-          {partners.map((partner, index) => {
-            const Icon = partnerIcons[index] ?? Handshake;
+
+        <div className="section-inner partner-tier-grid">
+          {partnerTiers.map((tier) => {
+            const Icon = tier.icon;
             return (
-              <Reveal className="lender-card" key={partner}>
-                <Icon size={30} />
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h2>{partner}</h2>
-                <p>{partnerDescriptions[index]}</p>
-                <div className="lender-flow">
-                  <i />
-                  <strong>{index < 3 ? "Retail + business use" : index < 6 ? "Working capital route" : "Assessment route"}</strong>
+              <Reveal className="partner-tier-card" key={tier.label}>
+                <div>
+                  <Icon size={28} />
+                  <span>{tier.count}</span>
                 </div>
+                <h2>{tier.label}</h2>
+                <p>{tier.names.join("  |  ")}</p>
               </Reveal>
             );
           })}
         </div>
-        <div className="section-inner lender-note">
-          <strong>Compliance note</strong>
-          <p>{site.unverifiedNote}</p>
-        </div>
-        <div className="section-inner lender-logo-marquee" aria-label="Lender category logo strip">
-          <div>
-            {[...lenderLogoStrip, ...lenderLogoStrip].map((item, index) => (
-              <span key={`${item}-${index}`}>{item}</span>
-            ))}
+
+        <div className="section-inner partner-route-section">
+          <div className="partner-wall-head">
+            <span className="premium-eyebrow">How Aura uses the network</span>
+            <h2>Every case starts with fit, documents and repayment comfort.</h2>
           </div>
+          <div className="partner-route-grid">
+            {financeRoutes.map((route, index) => {
+              const Icon = route.icon;
+              return (
+                <Reveal className="partner-route-card" key={route.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <Icon size={30} />
+                  <h3>{route.title}</h3>
+                  <p>{route.text}</p>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="section-inner partner-page-marquee">
+          <AssociationLogoMarquee compact />
         </div>
       </section>
     </main>

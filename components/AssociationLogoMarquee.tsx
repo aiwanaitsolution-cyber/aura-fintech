@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const associationLogos = [
+export const associationLogos = [
   { name: "Bank of Baroda", src: "https://logo.clearbit.com/bankofbaroda.bank.in", href: "https://bankofbaroda.bank.in/" },
   { name: "Canara Bank", src: "https://logo.clearbit.com/canarabank.bank.in", href: "https://www.canarabank.bank.in/" },
   { name: "State Bank of India", src: "https://logo.clearbit.com/sbi.co.in", href: "https://sbi.bank.in/" },
