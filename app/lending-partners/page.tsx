@@ -103,7 +103,7 @@ export default function PartnersPage() {
         <div id="partner-logo-wall" className="section-inner partner-logo-wall">
           <div className="partner-wall-head">
             <span className="premium-eyebrow">Our lending associations</span>
-            <h2>Banking and finance brands displayed with clear visual hierarchy.</h2>
+            <h2>Banking and finance brands with a clear visual hierarchy.</h2>
           </div>
           <div className="partner-logo-grid" aria-label="Aura lending partner logos">
             {featuredLogos.map((logo, index) => (
