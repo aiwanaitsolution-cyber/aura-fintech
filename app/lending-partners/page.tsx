@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight, BadgeIndianRupee, Banknote, Building2, FileCheck2, HandCoins, Landmark, Network, TrendingUp } from "lucide-react";
+import { ArrowRight, Banknote, Building2, FileCheck2, HandCoins, Landmark, Network, TrendingUp } from "lucide-react";
 import { AssociationLogoMarquee, associationLogos } from "@/components/AssociationLogoMarquee";
 import { Reveal } from "@/components/Reveal";
 
@@ -69,13 +69,15 @@ export default function PartnersPage() {
           </div>
         </div>
         <div className="partner-hero-orbit" aria-label="Featured lending associations">
-          {featuredLogos.slice(0, 8).map((logo, index) => (
-            <div className={`partner-orbit-logo orbit-logo-${index + 1}`} key={logo.name}>
-              <Image src={logo.src} alt={`${logo.name} logo`} width={104} height={52} />
-            </div>
-          ))}
+          <div className="partner-orbit-ring">
+            {featuredLogos.slice(0, 8).map((logo, index) => (
+              <div className={`partner-orbit-logo orbit-logo-${index + 1}`} key={logo.name}>
+                <Image src={logo.src} alt={`${logo.name} logo`} width={104} height={52} />
+              </div>
+            ))}
+          </div>
           <div className="partner-orbit-core">
-            <BadgeIndianRupee size={36} />
+            <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={126} height={126} />
             <strong>Aura</strong>
             <span>Lender-ready coordination</span>
           </div>

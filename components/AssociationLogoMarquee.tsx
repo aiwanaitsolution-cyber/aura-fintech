@@ -24,12 +24,14 @@ export function AssociationLogoMarquee({ compact = false }: { compact?: boolean 
 
   return (
     <section className={`association-section${compact ? " compact-association" : ""}`} aria-labelledby={compact ? "about-association-title" : "association-title"}>
-      <div className="section-head split association-head">
-        <div>
-          <span className="premium-eyebrow">Our associations</span>
-          <h2 id={compact ? "about-association-title" : "association-title"}>Lender names clients recognise.</h2>
+      <div className="section-head association-head">
+        <div className="association-title-lockup">
+          <Image className="association-aura-logo" src="/assets/logo.png" alt="Aura Fintec Services logo" width={72} height={72} />
+          <div>
+            <span className="premium-eyebrow">Our associations</span>
+            <h2 id={compact ? "about-association-title" : "association-title"}>Lender names clients recognise.</h2>
+          </div>
         </div>
-        <p>Logo strip shown from the client-supplied association list. Final publication should follow approved relationship and logo-usage confirmation.</p>
       </div>
       <div className="association-marquee" aria-label="Association logo carousel">
         <div className="association-track">
