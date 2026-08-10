@@ -1756,12 +1756,15 @@ textarea {
 }
 
 .founder-brand-board {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, .86fr) minmax(0, 1fr);
   gap: 24px;
-  align-items: end;
+  align-items: center;
   margin-bottom: 28px;
   padding: clamp(24px, 5vw, 48px);
+  overflow: hidden;
   color: #fff;
   background:
     radial-gradient(circle at 92% 10%, rgba(242,140,24,.34), transparent 18rem),
@@ -1773,26 +1776,31 @@ textarea {
 .founder-brand-board h2 {
   max-width: 760px;
   margin: 0;
-  color: #fff;
-  font-size: clamp(2.2rem, 5vw, 5.4rem);
+  color: #fff !important;
+  text-shadow: 0 18px 44px rgba(0,0,0,.32);
+  font-size: clamp(2.35rem, 4.9vw, 5.25rem);
   line-height: .98;
 }
 
 .founder-proof-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: clamp(12px, 1.4vw, 18px);
+  min-width: 0;
 }
 
 .founder-proof-grid div {
   display: grid;
-  gap: 8px;
-  min-height: 180px;
-  padding: 18px;
-  background: rgba(255,255,255,.09);
-  border: 1px solid rgba(255,255,255,.14);
+  align-content: start;
+  gap: 10px;
+  min-width: 0;
+  min-height: clamp(168px, 16vw, 220px);
+  padding: clamp(18px, 2vw, 24px);
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.22);
   border-radius: 18px;
-  backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14);
+  backdrop-filter: blur(18px) saturate(1.12);
 }
 
 .founder-proof-grid svg {
@@ -1800,14 +1808,16 @@ textarea {
 }
 
 .founder-proof-grid strong {
-  color: #fff;
-  font-size: clamp(1.6rem, 3vw, 2.7rem);
-  line-height: 1;
+  color: #fff !important;
+  overflow-wrap: anywhere;
+  font-size: clamp(2.05rem, 3vw, 3.2rem);
+  line-height: 1.02;
 }
 
 .founder-proof-grid span {
-  color: rgba(255,255,255,.72);
+  color: rgba(255,255,255,.9) !important;
   line-height: 1.55;
+  font-weight: 750;
 }
 
 .journey-node {
@@ -3570,6 +3580,13 @@ td {
   }
 }
 
+@media (max-width: 1180px) {
+  .founder-brand-board {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
 @media (max-width: 980px) {
   .desktop-nav,
   .header-actions .ghost-button,
@@ -3631,6 +3648,7 @@ td {
   .study-diagram,
   .study-cards,
   .founder-mini-journey,
+  .founder-proof-grid,
   .expertise-board {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3696,6 +3714,15 @@ td {
 
   .hero-copy h1 {
     font-size: clamp(2.4rem, 15vw, 4.2rem);
+  }
+
+  .founder-brand-board {
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .founder-brand-board h2 {
+    font-size: clamp(2rem, 11vw, 3.35rem);
   }
 
   .fin-dashboard {
