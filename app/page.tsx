@@ -12,7 +12,7 @@ import { faqs } from "@/lib/client-data";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="home-page">
       <PremiumHero />
       <BentoServiceGrid />
       <AudienceTabs />
