@@ -317,6 +317,8 @@ textarea {
   gap: 10px;
   align-items: flex-start;
   min-width: 0;
+  min-height: 92px;
+  overflow: hidden;
   padding: 12px;
   color: var(--deep);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 242, 228, 0.88));
@@ -328,21 +330,35 @@ textarea {
 
 .mega-links svg {
   flex: 0 0 auto;
+  width: 18px;
+  margin-top: 2px;
   color: var(--primary);
 }
 
 .mega-links a > span {
   display: block;
   min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
   color: inherit;
-  font-size: clamp(0.9rem, 1.05vw, 1.02rem);
+}
+
+.mega-links strong {
+  display: -webkit-box;
+  overflow: hidden;
+  color: inherit;
+  font-size: clamp(0.84rem, 0.95vw, 0.98rem);
   font-weight: 950;
   line-height: 1.18;
   overflow-wrap: anywhere;
+  word-break: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .mega-links small {
   display: -webkit-box;
+  width: 100%;
   margin-top: 4px;
   overflow: hidden;
   color: var(--muted);
@@ -350,6 +366,7 @@ textarea {
   font-weight: 700;
   line-height: 1.25;
   overflow-wrap: anywhere;
+  word-break: break-word;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }

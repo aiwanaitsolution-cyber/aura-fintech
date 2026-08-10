@@ -159,15 +159,15 @@ function MegaMenu({ type, close, keepOpen, scheduleClose }: { type: "about" | "s
       <div className="mega-links">
         {type === "about" && (
           <>
-            <Link href="/about-us" onClick={close}><BookOpen size={18} /><span>About Aura<small>Company story and service approach</small></span></Link>
-            <Link href="/founder" onClick={close}><BookOpen size={18} /><span>Founder<small>CA Ankita Garg profile</small></span></Link>
+            <Link href="/about-us" onClick={close}><BookOpen size={18} /><span><strong>About Aura</strong><small>Company story and service approach</small></span></Link>
+            <Link href="/founder" onClick={close}><BookOpen size={18} /><span><strong>Founder</strong><small>CA Ankita Garg profile</small></span></Link>
           </>
         )}
         {type === "services" && services.map((service) => {
           const Icon = service.icon;
-          return <Link key={service.slug} href={`/services/${service.slug}`} onClick={close}><Icon size={18} /><span>{service.title}<small>{service.audience}</small></span></Link>;
+          return <Link key={service.slug} href={`/services/${service.slug}`} onClick={close}><Icon size={18} /><span><strong>{service.title}</strong><small>{service.audience}</small></span></Link>;
         })}
-        {type === "resources" && blogPosts.map((post) => <Link key={post.slug} href={`/resources/${post.slug}`} onClick={close}><BookOpen size={18} /><span>{post.title}<small>{post.excerpt}</small></span></Link>)}
+        {type === "resources" && blogPosts.map((post) => <Link key={post.slug} href={`/resources/${post.slug}`} onClick={close}><BookOpen size={18} /><span><strong>{post.title}</strong><small>{post.excerpt}</small></span></Link>)}
       </div>
     </motion.div>
   );
