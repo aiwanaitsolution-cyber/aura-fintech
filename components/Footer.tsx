@@ -20,7 +20,6 @@ export function Footer() {
             <span>Share your profile through the application form. No approval promises, just a cleaner next step.</span>
             <Link className="primary-button compact" href="/apply-now">Request callback</Link>
           </div>
-          <p className="fineprint">{site.unverifiedNote}</p>
         </div>
         <div>
           <h2>Company</h2>
@@ -42,7 +41,7 @@ export function Footer() {
       </div>
       <div className="footer-bottom">
         <span>Copyright {new Date().getFullYear()} Aura Fintec Services. All rights reserved.</span>
-        <span>
+        <span className="footer-legal-links">
           <Link href="/privacy-policy">Privacy</Link> <Link href="/terms-and-conditions">Terms</Link>{" "}
           <Link href="/disclaimer">Disclaimer</Link> <Link href="/grievance-redressal">Grievance</Link>
         </span>

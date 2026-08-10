@@ -148,6 +148,23 @@ export function Header() {
 
 function MegaMenu({ type, close, keepOpen, scheduleClose }: { type: "about" | "services" | "resources"; close: () => void; keepOpen: () => void; scheduleClose: () => void }) {
   const title = type === "services" ? "Choose a loan pathway" : type === "about" ? "Meet the story behind Aura" : "Read and prepare";
+  const serviceMenuOrder = [
+    "business-loan",
+    "home-loan",
+    "term-loan",
+    "loan-against-property",
+    "surety-bonds",
+    "vehicle-loan",
+    "bills-discounting",
+    "msme-loan",
+    "working-capital-loan",
+    "balance-transfer",
+    "project-finance"
+  ];
+  const serviceMenuItems = serviceMenuOrder
+    .map((slug) => services.find((service) => service.slug === slug))
+    .filter((service): service is (typeof services)[number] => Boolean(service));
+
   return (
     <motion.div className="mega-menu premium-mega" onMouseEnter={keepOpen} onMouseLeave={scheduleClose} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}>
       <div className="mega-feature">
@@ -163,7 +180,7 @@ function MegaMenu({ type, close, keepOpen, scheduleClose }: { type: "about" | "s
             <Link href="/founder" onClick={close}><BookOpen size={18} /><span><strong>Founder</strong><small>CA Ankita Garg profile</small></span></Link>
           </>
         )}
-        {type === "services" && services.map((service) => {
+        {type === "services" && serviceMenuItems.map((service) => {
           const Icon = service.icon;
           return <Link key={service.slug} href={`/services/${service.slug}`} onClick={close}><Icon size={18} /><span><strong>{service.title}</strong><small>{service.audience}</small></span></Link>;
         })}
