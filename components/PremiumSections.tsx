@@ -32,23 +32,23 @@ import { calculateEmi, formatInr } from "@/lib/calculators";
 
 export function PremiumHero() {
   const reduced = useReducedMotion();
+  const heroSlides = ["/assets/hero/1.png", "/assets/hero/2.png", "/assets/hero/3.png", "/assets/hero/4.png"];
   return (
     <section className="premium-hero cinematic-hero">
-      <div className="hero-video-fallback" aria-hidden />
-      {!reduced && (
-        <video
-          className="hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/assets/aura-loan-syndication.jpeg"
-          aria-hidden="true"
-        >
-          <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
-        </video>
-      )}
+      <div className="hero-carousel" aria-hidden="true">
+        {heroSlides.map((src, index) => (
+          <Image
+            key={src}
+            src={src}
+            alt=""
+            fill
+            priority={index === 0}
+            sizes="100vw"
+            className="hero-carousel-image"
+            style={reduced ? { opacity: index === 0 ? 1 : 0, animation: "none" } : { animationDelay: `${index * 2}s` }}
+          />
+        ))}
+      </div>
       <div className="hero-cinematic-overlay" aria-hidden />
       <div className="hero-grid-bg" aria-hidden />
       <motion.div
