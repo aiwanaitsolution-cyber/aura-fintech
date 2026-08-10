@@ -1049,8 +1049,8 @@ textarea {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 240, 0.86) 58%, rgba(255, 244, 230, 0.94)),
-    radial-gradient(circle at 100% 0%, rgba(242, 140, 24, 0.18), transparent 13rem);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.82) 42%, rgba(255, 255, 255, 0.22) 78%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04));
 }
 
 .bento-card::after {
@@ -1109,7 +1109,24 @@ textarea {
 
 .bento-card h3 {
   color: inherit;
-  font-size: 1.45rem;
+  max-width: 430px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  line-height: 1.08;
+}
+
+.bento-card p {
+  max-width: 520px;
+  color: #17304d;
+  font-weight: 760;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.bento-card small {
+  max-width: 500px;
+  color: #4f647e;
+  font-weight: 850;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.38);
 }
 
 .bento-card a {
