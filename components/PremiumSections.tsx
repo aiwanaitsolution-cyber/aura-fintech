@@ -29,6 +29,7 @@ import {
   testimonials
 } from "@/lib/client-data";
 import { calculateEmi, formatInr } from "@/lib/calculators";
+import { getServiceImage } from "@/lib/service-assets";
 
 export function PremiumHero() {
   const reduced = useReducedMotion();
@@ -151,6 +152,7 @@ export function BentoServiceGrid() {
           const Icon = service.icon;
           return (
             <motion.div whileHover={{ y: -8 }} className={`bento-card bento-${index % 5}`} key={service.slug}>
+              <Image className="bento-card-bg" src={getServiceImage(service.slug)} alt="" fill sizes="(max-width: 980px) 50vw, 33vw" />
               <Icon size={30} />
               <h3>{service.title}</h3>
               <p>{service.short}</p>
