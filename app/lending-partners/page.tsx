@@ -52,6 +52,9 @@ const financeRoutes = [
 
 export default function PartnersPage() {
   const featuredLogos = associationLogos.slice(0, 16);
+  const orbitLogos = ["Bank of Baroda", "Canara Bank", "HDFC Bank", "ICICI Bank", "Kotak Mahindra Bank", "IDFC First Bank"]
+    .map((name) => associationLogos.find((logo) => logo.name === name))
+    .filter((logo): logo is (typeof associationLogos)[number] => Boolean(logo));
 
   return (
     <main>
@@ -67,7 +70,7 @@ export default function PartnersPage() {
         </div>
         <div className="partner-hero-orbit" aria-label="Featured lending associations">
           <div className="partner-orbit-ring">
-            {featuredLogos.slice(0, 6).map((logo, index) => (
+            {orbitLogos.map((logo, index) => (
               <div className={`partner-orbit-logo orbit-logo-${index + 1}`} key={logo.name}>
                 <Image src={logo.src} alt={`${logo.name} logo`} width={104} height={52} />
               </div>

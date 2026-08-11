@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BadgeCheck, FileCheck2, Handshake } from "lucide-react";
 import { FAQ } from "@/components/FAQ";
 import { LeadForm } from "@/components/LeadForm";
 import { CalculatorSuite } from "@/components/CalculatorSuite";
@@ -91,9 +92,23 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.documents.map((item) => <p key={item}><span />{item}</p>)}
               </div>
             </div>
-            <p className="disclaimer">
-              Aura Fintec Services acts as a facilitator or DSA where applicable and is not itself the lender. Approval is subject to lender policies, eligibility, documentation, credit assessment and terms.
-            </p>
+            <div className="service-disclosure-visual" aria-label="Loan facilitation disclosure">
+              <div>
+                <Handshake size={24} />
+                <strong>Facilitation</strong>
+                <span>Coordination support</span>
+              </div>
+              <div>
+                <FileCheck2 size={24} />
+                <strong>Documents</strong>
+                <span>Profile readiness</span>
+              </div>
+              <div>
+                <BadgeCheck size={24} />
+                <strong>Lender review</strong>
+                <span>Policy-led decision</span>
+              </div>
+            </div>
             <FAQ items={service.faqs} />
           </article>
           <aside className="service-sticky-aside">
