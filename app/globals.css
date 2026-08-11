@@ -4030,6 +4030,18 @@ td {
   margin: 10px 0;
 }
 
+.site-footer a.footer-logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0 0 16px;
+}
+
+.site-footer .footer-logo-link .brand-wordmark {
+  display: inline-flex;
+  align-items: flex-start;
+}
+
 .fineprint,
 .disclaimer {
   color: var(--muted);
