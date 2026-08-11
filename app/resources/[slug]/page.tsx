@@ -42,9 +42,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               {study.summary.map((item) => <p key={item}><BadgeCheck size={18} /> {item}</p>)}
             </div>
             <div className="study-diagram">
-              {study.flow.map((item, index) => (
+              {study.flow.map((item) => (
                 <div key={item}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
                   <strong>{item}</strong>
                 </div>
               ))}
@@ -64,7 +63,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {study.checklist.map((item) => <p key={item}><FileCheck2 size={16} /> {item}</p>)}
             <Link className="blue-action small-action" href="/calculators/emi-calculator"><Calculator size={15} /> Run EMI scenario</Link>
           </aside>
-          <p className="disclaimer">Educational content only. Loan terms depend on lender policy, applicant profile, documentation and credit assessment.</p>
+          <p className="disclaimer study-disclaimer">Educational content only. Loan terms depend on lender policy, applicant profile, documentation and credit assessment.</p>
         </article>
       </section>
     </main>

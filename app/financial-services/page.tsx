@@ -17,7 +17,7 @@ export default function FinancialServicesPage() {
     <main>
       <section className="page-hero service-overview-hero">
         <div><span className="eyebrow">All services</span><h1>Loan syndication, structured finance and advisory solutions.</h1><p>Explore finance pathways for housing loans, LAP, business loans, surety-style support, working capital, project finance and MSME growth.</p></div>
-        <div className="service-overview-image"><Image src="/assets/aura-fintec-profile.jpeg" alt="Aura Fintec Services profile and loan products" width={1254} height={1254} priority /></div>
+        <div className="service-overview-image"><Image src="/assets/financial-services-hero.jpg" alt="Business finance consultation and loan document review" width={1200} height={800} priority /></div>
       </section>
       <section className="page-content services-showcase">
         <div className="section-inner section-title">
@@ -33,7 +33,6 @@ export default function FinancialServicesPage() {
               <Reveal className={`service-showcase-card accent-${accent}`} key={service.slug}>
                 <Link href={`/services/${service.slug}`}>
                   <Image className="service-card-bg" src={getServiceImage(service.slug)} alt="" fill sizes="(max-width: 980px) 50vw, 33vw" />
-                  <span className="service-index">{String(index + 1).padStart(2, "0")}</span>
                   <span className="service-icon"><Icon size={28} /></span>
                   <h2>{service.title}</h2>
                   <p>{service.short}</p>
