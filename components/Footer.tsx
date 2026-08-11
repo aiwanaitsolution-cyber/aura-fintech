@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { site } from "@/lib/client-data";
 
 export function Footer() {
@@ -8,12 +9,18 @@ export function Footer() {
       <div className="footer-grid">
         <div>
           <Link className="logo-link footer-logo-link brand-lockup" href="/" aria-label="Aura Fintec Services home">
-            <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={56} height={56} className="brand-icon" />
+            <Image src="/assets/logo.png" alt="Aura Fintec Services logo" width={64} height={64} className="brand-icon" />
             <span className="brand-wordmark" aria-label="Aura Fintec Services">
               <span className="brand-name">AURA</span>
               <span className="brand-services">FINTEC SERVICES</span>
             </span>
           </Link>
+          <div className="footer-socials" aria-label="Social links">
+            <a href={site.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram size={16} /><span>Instagram</span></a>
+            <a href={site.social.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={16} /><span>LinkedIn</span></a>
+            <a href={site.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook size={16} /><span>Facebook</span></a>
+            <a href={site.social.twitter} target="_blank" rel="noreferrer" aria-label="Twitter"><Twitter size={16} /><span>Twitter</span></a>
+          </div>
           <p>{site.tagline}</p>
           <div className="newsletter-card">
             <strong>Get a consultation callback</strong>
@@ -33,7 +40,6 @@ export function Footer() {
           <h2>Contact</h2>
           <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
           <a href={`mailto:${site.email}`}>{site.email}</a>
-          <p>{site.address}</p>
           <Link className="primary-button" href="/apply-now">
             Start Application
           </Link>

@@ -12,11 +12,11 @@ export function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
-  const [menu, setMenu] = useState<"about" | "services" | "resources" | null>(null);
+  const [menu, setMenu] = useState<"services" | "resources" | null>(null);
   const [pinnedMenu, setPinnedMenu] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  function openMenu(nextMenu: "about" | "services" | "resources", pinned = false) {
+  function openMenu(nextMenu: "services" | "resources", pinned = false) {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setPinnedMenu(pinned);
     setMenu(nextMenu);
@@ -86,9 +86,8 @@ export function Header() {
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation" onMouseLeave={scheduleClose} onMouseEnter={() => closeTimer.current && clearTimeout(closeTimer.current)}>
             <Link href="/" aria-current={isHome ? "page" : undefined}>Home</Link>
-            <button className="nav-menu-button" onMouseEnter={() => openMenu("about")} onFocus={() => openMenu("about")} onClick={() => menu === "about" && pinnedMenu ? closeMenu() : openMenu("about", true)} aria-expanded={menu === "about"}>
-              About <ChevronDown size={16} aria-hidden />
-            </button>
+            <Link href="/about-us">About</Link>
+            <Link href="/founder">Founder</Link>
             <Link href="/lending-partners">Partners</Link>
             <button className="nav-menu-button" onMouseEnter={() => openMenu("services")} onFocus={() => openMenu("services")} onClick={() => menu === "services" && pinnedMenu ? closeMenu() : openMenu("services", true)} aria-expanded={menu === "services"}>
               Services <ChevronDown size={16} aria-hidden />
@@ -101,7 +100,7 @@ export function Header() {
           </nav>
           <div className="header-actions">
             <Link className="ghost-button compact" href="/financial-services#calculators">
-              Calculator
+              EMI Calculator
             </Link>
             <Link className="primary-button compact" href="/apply-now">
               Apply Now
@@ -146,8 +145,8 @@ export function Header() {
   );
 }
 
-function MegaMenu({ type, close, keepOpen, scheduleClose }: { type: "about" | "services" | "resources"; close: () => void; keepOpen: () => void; scheduleClose: () => void }) {
-  const title = type === "services" ? "Choose a loan pathway" : type === "about" ? "Meet the story behind Aura" : "Read and prepare";
+function MegaMenu({ type, close, keepOpen, scheduleClose }: { type: "services" | "resources"; close: () => void; keepOpen: () => void; scheduleClose: () => void }) {
+  const title = type === "services" ? "Choose a loan pathway" : "Read and prepare";
   const serviceMenuOrder = [
     "business-loan",
     "home-loan",
@@ -174,12 +173,6 @@ function MegaMenu({ type, close, keepOpen, scheduleClose }: { type: "about" | "s
         <Link className="primary-button compact" href="/apply-now" onClick={close}>Apply Now</Link>
       </div>
       <div className="mega-links">
-        {type === "about" && (
-          <>
-            <Link href="/about-us" onClick={close}><BookOpen size={18} /><span><strong>About Aura</strong><small>Company story and service approach</small></span></Link>
-            <Link href="/founder" onClick={close}><BookOpen size={18} /><span><strong>Founder</strong><small>CA Ankita Garg profile</small></span></Link>
-          </>
-        )}
         {type === "services" && serviceMenuItems.map((service) => {
           const Icon = service.icon;
           return <Link key={service.slug} href={`/services/${service.slug}`} onClick={close}><Icon size={18} /><span><strong>{service.title}</strong><small>{service.audience}</small></span></Link>;

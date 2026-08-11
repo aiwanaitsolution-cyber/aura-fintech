@@ -31,15 +31,14 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-          <div className="story-overlay-stack">
+            <div className="story-overlay-stack">
             {[
-              ["01", "Understand", "Map borrower profile, loan purpose and repayment comfort."],
-              ["02", "Prepare", "Convert KYC, financials and property or business documents into a clean file."],
-              ["03", "Structure", "Review product fit, tenure, EMI, collateral and lender category."],
-              ["04", "Coordinate", "Proceed only with consent and clear lender-policy expectations."]
-            ].map(([step, title, text]) => (
-              <article key={step} className="story-overlay-card">
-                <span>{step}</span>
+              ["Understand", "Map borrower profile, loan purpose and repayment comfort."],
+              ["Prepare", "Convert KYC, financials and property or business documents into a clean file."],
+              ["Structure", "Review product fit, tenure, EMI, collateral and lender category."],
+              ["Coordinate", "Proceed only with consent and clear lender-policy expectations."]
+            ].map(([title, text]) => (
+              <article key={title} className="story-overlay-card">
                 <h3>{title}</h3>
                 <p className="story-overlay-copy">{text}</p>
               </article>
