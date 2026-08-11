@@ -2186,8 +2186,23 @@ blockquote {
 .section-inner,
 .footer-grid,
 .footer-bottom {
+  width: 100%;
   max-width: 1180px;
   margin: 0 auto;
+}
+
+.section-inner > *,
+.page-panel,
+.card,
+.lead-form,
+.calculator-card,
+.service-detail-layout > *,
+.service-meta > *,
+.service-flow-diagram > *,
+.service-visual-columns > *,
+.service-disclosure-visual > *,
+.footer-grid > * {
+  min-width: 0;
 }
 
 .hero {
@@ -3443,7 +3458,7 @@ blockquote {
   isolation: isolate;
   overflow: hidden;
   background-image:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 239, 0.82) 54%, rgba(255, 255, 255, 0.72)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.34), rgba(255, 248, 239, 0.2) 54%, rgba(255, 255, 255, 0.14)),
     var(--service-page-bg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -3457,8 +3472,8 @@ blockquote {
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(circle at 9% 9%, rgba(242, 140, 24, 0.14), transparent 22rem),
-    radial-gradient(circle at 88% 20%, rgba(8, 45, 92, 0.12), transparent 24rem);
+    radial-gradient(circle at 9% 9%, rgba(242, 140, 24, 0.08), transparent 22rem),
+    radial-gradient(circle at 88% 20%, rgba(8, 45, 92, 0.08), transparent 24rem);
   pointer-events: none;
 }
 
@@ -3472,10 +3487,14 @@ blockquote {
 .service-floating-content .service-sticky-aside .lead-form,
 .service-floating-content .service-sticky-aside .card,
 .service-floating-content .service-calculator-band .calculator-card {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   border-color: rgba(8, 45, 92, 0.12);
   box-shadow: 0 26px 70px rgba(8, 45, 92, 0.16);
   backdrop-filter: blur(18px) saturate(1.12);
+}
+
+.service-floating-content .service-sticky-aside {
+  min-width: 0;
 }
 
 .service-decision-panel {
@@ -4605,6 +4624,9 @@ td {
 
   .service-floating-content {
     background-attachment: scroll;
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 248, 239, 0.3)),
+      var(--service-page-bg);
   }
 
   .metrics-rail,
@@ -4680,6 +4702,13 @@ td {
   .chart-grid {
     grid-template-columns: 1fr;
   }
+
+  .service-floating-content .service-decision-panel,
+  .service-floating-content .service-sticky-aside .lead-form,
+  .service-floating-content .service-sticky-aside .card,
+  .service-floating-content .service-calculator-band .calculator-card {
+    background: rgba(255, 255, 255, 0.92);
+  }
 }
 
 @media (max-width: 640px) {
@@ -4710,6 +4739,28 @@ td {
   .hero,
   .premium-hero {
     min-height: auto;
+  }
+
+  .service-hero {
+    gap: 22px;
+  }
+
+  .service-hero h1 {
+    font-size: clamp(2rem, 13vw, 3.2rem);
+    line-height: 1.03;
+  }
+
+  .service-hero p {
+    font-size: 0.95rem;
+  }
+
+  .hero-badges {
+    gap: 8px;
+  }
+
+  .hero-badges span {
+    padding: 8px 10px;
+    font-size: 0.78rem;
   }
 
   .premium-hero {
@@ -4767,8 +4818,9 @@ td {
   .bento-grid,
   .profile-pathway,
   .doc-card-grid,
-  .service-flow-diagram,
-  .study-diagram,
+    .service-flow-diagram,
+    .service-disclosure-visual,
+    .study-diagram,
   .study-cards,
   .founder-mini-journey,
   .expertise-board,
@@ -4781,6 +4833,22 @@ td {
   .partner-tier-grid,
   .partner-route-grid {
     grid-template-columns: 1fr;
+  }
+
+  .service-floating-content {
+    padding-inline: 14px;
+  }
+
+  .service-floating-content .service-decision-panel,
+  .service-floating-content .service-sticky-aside .lead-form,
+  .service-floating-content .service-sticky-aside .card,
+  .service-floating-content .service-calculator-band .calculator-card {
+    border-radius: 18px;
+    padding-inline: 16px;
+  }
+
+  .service-disclosure-visual {
+    padding: 10px;
   }
 
   .partner-hero-redesign {
