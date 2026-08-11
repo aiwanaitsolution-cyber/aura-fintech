@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-import { site } from "@/lib/client-data";
+import { services, site } from "@/lib/client-data";
 
 export function Footer() {
   return (
@@ -22,11 +22,6 @@ export function Footer() {
             <a href={site.social.twitter} target="_blank" rel="noreferrer" aria-label="Twitter"><Twitter size={16} /><span>Twitter</span></a>
           </div>
           <p>{site.tagline}</p>
-          <div className="newsletter-card">
-            <strong>Get a consultation callback</strong>
-            <span>Share your profile through the application form. No approval promises, just a cleaner next step.</span>
-            <Link className="primary-button compact" href="/apply-now">Request callback</Link>
-          </div>
         </div>
         <div>
           <h2>Company</h2>
@@ -35,6 +30,13 @@ export function Footer() {
           <Link href="/lending-partners">Lending Partners</Link>
           <Link href="/faq">FAQs</Link>
           <Link href="/sitemap">Sitemap</Link>
+        </div>
+        <div>
+          <h2>Services</h2>
+          {services.slice(0, 8).map((service) => (
+            <Link key={service.slug} href={`/services/${service.slug}`}>{service.title}</Link>
+          ))}
+          <Link href="/financial-services">All Services</Link>
         </div>
         <div>
           <h2>Contact</h2>

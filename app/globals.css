@@ -326,7 +326,7 @@ textarea {
   gap: 10px;
   align-items: flex-start;
   min-width: 0;
-  min-height: 106px;
+  min-height: 118px;
   overflow: hidden;
   padding: 12px;
   color: var(--deep);
@@ -366,18 +366,16 @@ textarea {
 }
 
 .mega-links small {
-  display: -webkit-box;
+  display: block;
   width: 100%;
   margin-top: 4px;
-  overflow: hidden;
+  overflow: visible;
   color: var(--muted);
   font-size: clamp(0.68rem, 0.9vw, 0.78rem);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.32;
   overflow-wrap: anywhere;
   word-break: break-word;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
 }
 
 .mega-links a:hover small,
@@ -4064,7 +4062,7 @@ td {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-columns: minmax(260px, 1.3fr) minmax(150px, .75fr) minmax(190px, .9fr) minmax(210px, .8fr);
   gap: 30px;
   max-width: 1180px;
   margin-inline: auto;
@@ -4078,18 +4076,6 @@ td {
     linear-gradient(135deg, #020d1f, var(--deep));
 }
 
-.newsletter-card {
-  display: grid;
-  gap: 10px;
-  margin: 22px 0;
-  max-width: 360px;
-  padding: 16px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 16px;
-}
-
-.newsletter-card .primary-button,
 .site-footer .primary-button {
   display: inline-flex;
   align-items: center;
@@ -4306,9 +4292,12 @@ td {
 
 .study-visual strong {
   max-width: 100%;
-  font-size: clamp(2.1rem, 4.6vw, 4.3rem);
-  line-height: .95;
-  white-space: nowrap;
+  font-size: clamp(2rem, 3.8vw, 3.6rem);
+  line-height: 0.98;
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  white-space: normal;
 }
 
 .study-visual span {
