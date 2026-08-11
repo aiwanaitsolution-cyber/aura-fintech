@@ -8,7 +8,7 @@ import { FAQ } from "@/components/FAQ";
 import { LeadForm } from "@/components/LeadForm";
 import { CalculatorSuite } from "@/components/CalculatorSuite";
 import { PremiumCTA } from "@/components/PremiumSections";
-import { services, site } from "@/lib/client-data";
+import { services } from "@/lib/client-data";
 import { getServiceImage } from "@/lib/service-assets";
 
 export function generateStaticParams() {
@@ -58,11 +58,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="section-inner service-detail-layout">
           <article className="page-panel service-decision-panel">
             <Icon size={38} />
-            <div className="service-meta">
-              <div><span>Audience</span><strong>{service.audience}</strong></div>
-              <div><span>Amount</span><strong>{service.amount}</strong></div>
-              <div><span>Tenure</span><strong>{service.tenure}</strong></div>
-            </div>
             <div className="service-flow-diagram" aria-label="Service decision flow">
               {[
                 ["Profile", service.audience],
@@ -107,12 +102,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </article>
           <aside className="service-sticky-aside">
             <LeadForm product={service.title} />
-            <div className="card" style={{ marginTop: 18 }}>
+            <div className="card useful-tools-card" style={{ marginTop: 18 }}>
               <h3>Useful tools</h3>
-              <Link className="blue-action small-action" href="/calculators/emi-calculator">EMI Calculator</Link>
-              <Link className="blue-action small-action" href="/calculators/loan-eligibility-calculator">Eligibility Calculator</Link>
-              <Link className="blue-action small-action" href="/calculators/balance-transfer-calculator">Balance Transfer</Link>
-              <p className="fineprint">{site.unverifiedNote}</p>
+              <div className="tool-link-grid">
+                <Link href="/calculators/emi-calculator">EMI Calculator</Link>
+                <Link href="/calculators/loan-eligibility-calculator">Eligibility Calculator</Link>
+                <Link href="/calculators/balance-transfer-calculator">Balance Transfer</Link>
+              </div>
             </div>
           </aside>
         </div>

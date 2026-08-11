@@ -3625,6 +3625,49 @@ blockquote {
   max-width: 34ch;
 }
 
+.useful-tools-card {
+  display: grid;
+  gap: 14px;
+}
+
+.useful-tools-card h3 {
+  margin: 0;
+}
+
+.tool-link-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.tool-link-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 12px 14px;
+  color: var(--deep);
+  background:
+    radial-gradient(circle at 95% 10%, rgba(242, 140, 24, 0.16), transparent 8rem),
+    linear-gradient(180deg, #fff, #fff7ee);
+  border: 1px solid rgba(229, 106, 0, 0.18);
+  border-radius: 12px;
+  font-weight: 950;
+  box-shadow: 0 12px 28px rgba(8, 45, 92, 0.08);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.tool-link-grid a::after {
+  content: "→";
+  color: var(--orange);
+  font-size: 1.1rem;
+}
+
+.tool-link-grid a:hover {
+  border-color: rgba(229, 106, 0, 0.4);
+  box-shadow: 0 18px 38px rgba(8, 45, 92, 0.14);
+  transform: translateY(-2px);
+}
+
 .service-visual-card {
   position: relative;
   isolation: isolate;

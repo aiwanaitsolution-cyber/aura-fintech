@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/client-data";
 
 export const metadata: Metadata = { title: "Privacy Policy", description: "Privacy policy template for Aura Fintec Services." };
 
@@ -8,8 +7,7 @@ export default function PrivacyPolicyPage() {
     ["Information we collect", "We may collect contact details, city, PIN code, loan requirement, income or turnover range, employment type, existing EMI, consent status, source page and UTM parameters for inquiry handling."],
     ["How information is used", "Information is used to respond to inquiries, understand product fit, prepare lender-ready discussion and maintain consent logs."],
     ["Sharing", "Information may be shared with lenders, CRM, email or service providers only where required for the inquiry and subject to consent and applicable law."],
-    ["Security", "Do not submit OTPs, passwords, account credentials or card PINs. Production deployment should connect secure CRM/email systems through server-side environment variables."],
-    ["Client confirmation", site.unverifiedNote]
+    ["Security", "Do not submit OTPs, passwords, account credentials or card PINs. Production deployment should connect secure CRM/email systems through server-side environment variables."]
   ]} />;
 }
 

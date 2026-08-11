@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BadgeCheck, BarChart3, Building2, FileSearch, Handshake, Landmark, ShieldCheck, Sparkles, Target, TrendingUp } from "lucide-react";
-import { clientPlaceholders, site } from "@/lib/client-data";
+import { clientPlaceholders } from "@/lib/client-data";
 
 export function FounderSection() {
   const journey = [
@@ -67,9 +67,6 @@ export function FounderSection() {
           </div>
         ))}
         <Link className="blue-action" href="/contact-us">Contact Aura</Link>
-      </div>
-      <div className="section-inner founder-mini-note">
-        <p>{site.unverifiedNote}</p>
       </div>
     </section>
   );
