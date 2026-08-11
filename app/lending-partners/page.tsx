@@ -12,19 +12,16 @@ export const metadata: Metadata = {
 const partnerTiers = [
   {
     label: "Public sector banks",
-    count: "04",
     names: ["Bank of Baroda", "Canara Bank", "State Bank of India", "Saraswat Bank"],
     icon: Landmark
   },
   {
     label: "Private and global banks",
-    count: "07",
     names: ["HDFC Bank", "ICICI Bank", "Axis Bank", "Kotak Mahindra Bank", "IDFC First Bank", "IndusInd Bank", "Deutsche Bank"],
     icon: Building2
   },
   {
     label: "NBFC and specialist finance",
-    count: "05",
     names: ["AU Small Finance Bank", "Bajaj Finserv", "Aditya Birla Finance", "Ambit Finvest", "Jio Credit"],
     icon: Network
   }
@@ -70,7 +67,7 @@ export default function PartnersPage() {
         </div>
         <div className="partner-hero-orbit" aria-label="Featured lending associations">
           <div className="partner-orbit-ring">
-            {featuredLogos.slice(0, 8).map((logo, index) => (
+            {featuredLogos.slice(0, 6).map((logo, index) => (
               <div className={`partner-orbit-logo orbit-logo-${index + 1}`} key={logo.name}>
                 <Image src={logo.src} alt={`${logo.name} logo`} width={104} height={52} />
               </div>
@@ -103,7 +100,7 @@ export default function PartnersPage() {
         <div id="partner-logo-wall" className="section-inner partner-logo-wall">
           <div className="partner-wall-head">
             <span className="premium-eyebrow">Our lending associations</span>
-            <h2>Banking and finance brands with a clear visual hierarchy.</h2>
+            <h2>Banking and finance brands</h2>
           </div>
           <div className="partner-logo-grid" aria-label="Aura lending partner logos">
             {featuredLogos.map((logo, index) => (
@@ -125,7 +122,6 @@ export default function PartnersPage() {
               <Reveal className="partner-tier-card" key={tier.label}>
                 <div>
                   <Icon size={28} />
-                  <span>{tier.count}</span>
                 </div>
                 <h2>{tier.label}</h2>
                 <p>{tier.names.join("  |  ")}</p>

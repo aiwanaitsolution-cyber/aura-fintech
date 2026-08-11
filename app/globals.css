@@ -1979,9 +1979,15 @@ textarea {
 
 .founder-proof-grid strong {
   color: #fff !important;
-  overflow-wrap: anywhere;
-  font-size: clamp(1.6rem, 2.35vw, 2.45rem);
+  overflow-wrap: normal;
+  word-break: normal;
+  font-size: clamp(1.35rem, 1.9vw, 2.15rem);
   line-height: 1.02;
+}
+
+.founder-proof-grid div:last-child strong {
+  white-space: nowrap;
+  font-size: clamp(1.22rem, 1.65vw, 1.9rem);
 }
 
 .founder-proof-grid span {
@@ -2791,12 +2797,12 @@ blockquote {
   object-fit: contain;
 }
 
-.orbit-logo-1 { left: 6%; top: 7%; }
+.orbit-logo-1 { left: 7%; top: 8%; }
 .orbit-logo-2 { left: 45%; top: 0; }
-.orbit-logo-3 { right: 4%; top: 17%; }
-.orbit-logo-4 { right: 0; top: 55%; }
-.orbit-logo-5 { right: 26%; bottom: 0; }
-.orbit-logo-6 { left: 22%; bottom: 4%; }
+.orbit-logo-3 { right: 5%; top: 17%; }
+.orbit-logo-4 { right: 5%; bottom: 14%; }
+.orbit-logo-5 { left: 43%; bottom: 0; }
+.orbit-logo-6 { left: 6%; bottom: 17%; }
 .orbit-logo-7 { left: 0; top: 46%; }
 .orbit-logo-8 { left: 24%; top: 28%; }
 
@@ -3451,7 +3457,7 @@ blockquote {
   position: relative;
   display: grid;
   gap: 8px;
-  min-height: 150px;
+  min-height: 118px;
   padding: 18px;
   background:
     radial-gradient(circle at 100% 0%, rgba(229,106,0,.12), transparent 8rem),
@@ -3468,13 +3474,6 @@ blockquote {
   width: 14px;
   height: 2px;
   background: var(--orange);
-}
-
-.service-flow-diagram span {
-  color: rgba(8,45,92,.18);
-  font-size: 2.3rem;
-  font-weight: 950;
-  line-height: .8;
 }
 
 .service-flow-diagram small {

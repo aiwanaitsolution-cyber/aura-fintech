@@ -74,9 +74,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 ["Documents", `${service.documents.length} groups`],
                 ["Structure", service.tenure],
                 ["Next step", "Apply with consent"]
-              ].map(([label, value], index) => (
+              ].map(([label, value]) => (
                 <div key={label}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
                   <strong>{label}</strong>
                   <small>{value}</small>
                 </div>
