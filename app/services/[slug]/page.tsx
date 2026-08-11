@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -31,6 +32,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (!service) notFound();
   const Icon = service.icon;
   const serviceImage = getServiceImage(service.slug);
+  const serviceBackgroundStyle = { "--service-page-bg": `url(${serviceImage})` } as CSSProperties;
   return (
     <main>
       <section className={`page-hero service-hero service-${service.slug}`}>
@@ -52,15 +54,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <i />
         </div>
       </section>
-      <section className="page-content">
-        <div className="section-inner service-image-story">
-          <Image src={serviceImage} alt={`${service.title} service pathway illustration`} fill sizes="(max-width: 980px) 100vw, 1180px" />
-          <div>
-            <span className="premium-eyebrow">Service pathway</span>
-            <h2>{service.title} guidance built around profile, paperwork and repayment comfort.</h2>
-            <p>{service.short}</p>
-          </div>
-        </div>
+      <section className="page-content service-floating-content" style={serviceBackgroundStyle}>
         <div className="section-inner service-detail-layout">
           <article className="page-panel service-decision-panel">
             <Icon size={38} />

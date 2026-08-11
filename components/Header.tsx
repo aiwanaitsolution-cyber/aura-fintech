@@ -90,7 +90,7 @@ export function Header() {
             <Link href="/founder">Founder</Link>
             <Link href="/lending-partners">Partners</Link>
             <button className="nav-menu-button" onMouseEnter={() => openMenu("services")} onFocus={() => openMenu("services")} onClick={() => menu === "services" && pinnedMenu ? closeMenu() : openMenu("services", true)} aria-expanded={menu === "services"}>
-              Services <ChevronDown size={16} aria-hidden />
+              Products <ChevronDown size={16} aria-hidden />
             </button>
             <button className="nav-menu-button" onMouseEnter={() => openMenu("resources")} onFocus={() => openMenu("resources")} onClick={() => menu === "resources" && pinnedMenu ? closeMenu() : openMenu("resources", true)} aria-expanded={menu === "resources"}>
               Resources <ChevronDown size={16} aria-hidden />

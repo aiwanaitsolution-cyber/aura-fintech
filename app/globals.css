@@ -193,7 +193,7 @@ textarea {
 .brand-name {
   color: #d96a00;
   font-family: "Times New Roman", Georgia, serif;
-  font-size: clamp(1.12rem, 1.9vw, 1.62rem);
+  font-size: clamp(1.3rem, 2.15vw, 1.9rem);
   line-height: 0.96;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -326,7 +326,7 @@ textarea {
   gap: 10px;
   align-items: flex-start;
   min-width: 0;
-  min-height: 92px;
+  min-height: 106px;
   overflow: hidden;
   padding: 12px;
   color: var(--deep);
@@ -376,7 +376,7 @@ textarea {
   line-height: 1.25;
   overflow-wrap: anywhere;
   word-break: break-word;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
@@ -566,7 +566,7 @@ textarea {
 
 .footer-logo-link .brand-services {
   color: var(--orange);
-  font-size: clamp(0.58rem, 0.9vw, 0.76rem);
+  font-size: clamp(0.68rem, 1vw, 0.86rem);
   letter-spacing: 0.22em;
 }
 
@@ -1955,7 +1955,7 @@ textarea {
 
 .founder-proof-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(190px, 1fr));
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
   gap: clamp(12px, 1.4vw, 18px);
   min-width: 0;
 }
@@ -1965,7 +1965,7 @@ textarea {
   align-content: start;
   gap: 12px;
   min-width: 0;
-  min-height: clamp(178px, 16vw, 230px);
+  min-height: clamp(208px, 17vw, 260px);
   padding: clamp(20px, 2vw, 28px);
   background:
     radial-gradient(circle at 100% 0%, rgba(242, 140, 24, 0.18), transparent 10rem),
@@ -1990,7 +1990,7 @@ textarea {
 
 .founder-proof-grid div:last-child strong {
   white-space: nowrap;
-  font-size: clamp(1.22rem, 1.65vw, 1.9rem);
+  font-size: clamp(1.18rem, 1.55vw, 1.75rem);
 }
 
 .founder-proof-grid span {
@@ -3438,6 +3438,46 @@ blockquote {
   align-items: start;
 }
 
+.service-floating-content {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 239, 0.82) 54%, rgba(255, 255, 255, 0.72)),
+    var(--service-page-bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.service-floating-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 9% 9%, rgba(242, 140, 24, 0.14), transparent 22rem),
+    radial-gradient(circle at 88% 20%, rgba(8, 45, 92, 0.12), transparent 24rem);
+  pointer-events: none;
+}
+
+.service-floating-content .service-detail-layout,
+.service-floating-content .service-calculator-band {
+  position: relative;
+  z-index: 1;
+}
+
+.service-floating-content .service-decision-panel,
+.service-floating-content .service-sticky-aside .lead-form,
+.service-floating-content .service-sticky-aside .card,
+.service-floating-content .service-calculator-band .calculator-card {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(8, 45, 92, 0.12);
+  box-shadow: 0 26px 70px rgba(8, 45, 92, 0.16);
+  backdrop-filter: blur(18px) saturate(1.12);
+}
+
 .service-decision-panel {
   display: grid;
   gap: 22px;
@@ -4487,11 +4527,11 @@ td {
   }
 
   .brand-name {
-    font-size: 1.02rem;
+    font-size: 1.18rem;
   }
 
   .brand-services {
-    font-size: 0.48rem;
+    font-size: 0.52rem;
     letter-spacing: 0.28em;
   }
 
@@ -4561,6 +4601,10 @@ td {
 
   .premium-mega {
     display: none;
+  }
+
+  .service-floating-content {
+    background-attachment: scroll;
   }
 
   .metrics-rail,
