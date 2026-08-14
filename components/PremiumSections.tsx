@@ -80,6 +80,79 @@ export function PremiumHero() {
   );
 }
 
+export function IndependenceDayBanner() {
+  const reduced = useReducedMotion();
+  const visible = useMemo(() => {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).formatToParts(new Date());
+
+    const month = Number(parts.find((part) => part.type === "month")?.value ?? "0");
+    const day = Number(parts.find((part) => part.type === "day")?.value ?? "0");
+    return month === 8 && day >= 14 && day <= 15;
+  }, []);
+
+  if (!visible) {
+    return null;
+  }
+
+  return (
+    <section className="premium-section independence-banner-section">
+      <motion.div
+        className="independence-banner-card"
+        initial={reduced ? false : { opacity: 0, y: 18 }}
+        animate={reduced ? undefined : { opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
+        <div className="independence-banner-ribbon" aria-hidden="true">
+          <span className="ribbon-saffron" />
+          <span className="ribbon-white" />
+          <span className="ribbon-green" />
+        </div>
+        <div className="independence-banner-copy">
+          <span className="premium-eyebrow"><Sparkles size={16} /> Independence Day trust banner</span>
+          <h2>Celebrating India&apos;s growth with responsible finance.</h2>
+          <p>
+            This Independence Day, Aura Fintec Services continues to support businesses, professionals and families with structured, transparent finance guidance.
+          </p>
+          <div className="banner-badges" aria-label="Banner highlights">
+            <span><BadgeCheck size={15} /> Structured guidance</span>
+            <span><ShieldCheck size={15} /> Transparent support</span>
+            <span><TrendingUp size={15} /> Built for growth</span>
+          </div>
+          <div className="hero-actions banner-actions">
+            <Link className="primary-button independence-banner-primary magnetic" href="/apply-now">
+              Plan Your Finance
+              <ArrowRight size={18} />
+            </Link>
+            <Link className="ghost-button independence-banner-secondary magnetic" href="/calculators/emi-calculator">
+              Calculate EMI
+            </Link>
+          </div>
+        </div>
+        <div className="independence-banner-visual" aria-hidden="true">
+          <Image
+            src="/assets/financial-services-hero.jpg"
+            alt=""
+            fill
+            sizes="(max-width: 980px) 100vw, 42vw"
+            className="banner-visual-image"
+            priority={false}
+          />
+          <div className="banner-visual-overlay" />
+          <div className="banner-visual-card">
+            <strong>Trust-led finance</strong>
+            <span>Structured guidance for real-world lending decisions.</span>
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
 export function FloatingFinanceDashboard() {
   const emi = calculateEmi(3200000, 10.25, 120);
   const points = [18, 28, 25, 44, 39, 58, 52, 69, 64, 82];

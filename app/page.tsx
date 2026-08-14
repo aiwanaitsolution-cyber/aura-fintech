@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { FAQ } from "@/components/FAQ";
 import { AssociationLogoMarquee } from "@/components/AssociationLogoMarquee";
 import {
@@ -5,6 +6,7 @@ import {
   BentoServiceGrid,
   BlogShowcase,
   DocumentChecklist,
+  IndependenceDayBanner,
   EmiPreview,
   PremiumCTA,
   PremiumHero,
@@ -12,9 +14,12 @@ import {
 import { faqs } from "@/lib/client-data";
 
 export default function HomePage() {
+  noStore();
+
   return (
     <main className="home-page">
       <PremiumHero />
+      <IndependenceDayBanner />
       <BentoServiceGrid />
       <AudienceTabs />
       <EmiPreview />
