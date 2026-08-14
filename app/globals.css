@@ -1270,6 +1270,13 @@ textarea {
 
 .audience-redesign .section-head {
   max-width: 880px;
+  margin-inline: 0 auto;
+  text-align: left;
+}
+
+.services-showcase .section-title {
+  margin-inline: 0 auto;
+  text-align: left;
 }
 
 .audience-visual-top {

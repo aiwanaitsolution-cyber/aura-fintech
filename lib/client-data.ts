@@ -25,10 +25,10 @@ export const site = {
   tagline: "Loan syndication services, structured finance and strategic financial advisory for businesses ready to grow.",
   logoStatus: "Launch assets supplied by client are stored locally in /public/assets. Replace the SVG logo with the final transparent master logo if available.",
   social: {
-    instagram: "https://instagram.com/v",
-    twitter: "#",
-    linkedin: "#",
-    facebook: "#"
+    instagram: "https://www.instagram.com/aurafintec_services/",
+    twitter: "https://www.instagram.com/aurafintec_services/",
+    linkedin: "https://www.instagram.com/aurafintec_services/",
+    facebook: "https://www.instagram.com/aurafintec_services/"
   }
 };
 

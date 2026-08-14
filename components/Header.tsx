@@ -55,13 +55,13 @@ export function Header() {
             <a href={site.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
               <Instagram size={14} />
             </a>
-            <a href={site.social.twitter} aria-label="Twitter">
+            <a href={site.social.twitter} target="_blank" rel="noreferrer" aria-label="Twitter">
               <Twitter size={14} />
             </a>
-            <a href={site.social.linkedin} aria-label="LinkedIn">
+            <a href={site.social.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <Linkedin size={14} />
             </a>
-            <a href={site.social.facebook} aria-label="Facebook">
+            <a href={site.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
               <Facebook size={14} />
             </a>
           </div>
