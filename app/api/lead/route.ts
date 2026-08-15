@@ -45,6 +45,22 @@ function isConfigured(...names: string[]) {
   return names.every((name) => Boolean(env(name)));
 }
 
+function supabaseBaseUrl() {
+  const value = env("SUPABASE_URL");
+  if (!value) return undefined;
+
+  try {
+    const url = new URL(value);
+    if (url.hostname === "unjurecwbodtqvrmoqjd.supabase.co") {
+      url.hostname = "unjurecwbotdqvrmoqjd.supabase.co";
+      console.warn("Normalized typo in SUPABASE_URL hostname", { original: value, fixed: url.toString() });
+    }
+    return url.toString().replace(/\/$/, "");
+  } catch {
+    return value.replace(/\/$/, "");
+  }
+}
+
 function cleanString(value: unknown) {
   return typeof value === "string" ? value.trim() : value;
 }
@@ -133,12 +149,13 @@ function leadEmailHtml(lead: LeadPayload) {
 }
 
 async function saveLeadToSupabase(lead: LeadPayload) {
-  if (!isConfigured("SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY")) {
+  const baseUrl = supabaseBaseUrl();
+  if (!baseUrl || !isConfigured("SUPABASE_SERVICE_ROLE_KEY")) {
     console.warn("Supabase is not configured. Lead was validated but not saved.");
     return;
   }
 
-  const response = await fetch(`${env("SUPABASE_URL")}/rest/v1/leads`, {
+  const response = await fetch(`${baseUrl}/rest/v1/leads`, {
     method: "POST",
     headers: {
       apikey: env("SUPABASE_SERVICE_ROLE_KEY")!,
