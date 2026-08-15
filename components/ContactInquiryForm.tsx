@@ -47,7 +47,14 @@ export function ContactInquiryForm() {
         </label>
         <label className="field">
           <span>Contact no</span>
-          <input inputMode="numeric" value={form.mobile} onChange={(event) => setForm((current) => ({ ...current, mobile: event.target.value }))} />
+          <input
+            inputMode="numeric"
+            autoComplete="tel"
+            placeholder="10-digit mobile number"
+            pattern="[6-9][0-9]{9}"
+            value={form.mobile}
+            onChange={(event) => setForm((current) => ({ ...current, mobile: event.target.value.replace(/\D/g, "").slice(0, 10) }))}
+          />
         </label>
         <label className="field simple-enquiry">
           <span>Enquiry</span>

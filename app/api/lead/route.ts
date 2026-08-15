@@ -45,6 +45,39 @@ function isConfigured(...names: string[]) {
   return names.every((name) => Boolean(env(name)));
 }
 
+function cleanString(value: unknown) {
+  return typeof value === "string" ? value.trim() : value;
+}
+
+function normalizeMobile(value: unknown) {
+  if (typeof value !== "string") return value;
+  const digits = value.replace(/\D/g, "");
+  if (digits.length === 10) return digits;
+  if (digits.length === 12 && digits.startsWith("91")) return digits.slice(2);
+  return value.trim();
+}
+
+function normalizeLeadBody(body: unknown) {
+  if (!body || typeof body !== "object") return body;
+  const record = body as Record<string, unknown>;
+  return {
+    ...record,
+    fullName: cleanString(record.fullName),
+    name: cleanString(record.name),
+    mobile: normalizeMobile(record.mobile),
+    email: cleanString(record.email),
+    city: cleanString(record.city),
+    pinCode: cleanString(record.pinCode),
+    loanProduct: cleanString(record.loanProduct),
+    employmentType: cleanString(record.employmentType),
+    contactTime: cleanString(record.contactTime),
+    enquiry: cleanString(record.enquiry),
+    website: cleanString(record.website),
+    sourcePath: cleanString(record.sourcePath),
+    submittedAt: cleanString(record.submittedAt)
+  };
+}
+
 function leadSubject(lead: LeadPayload) {
   return lead.kind === "full"
     ? `New ${lead.loanProduct} inquiry from ${lead.fullName}`
@@ -142,7 +175,7 @@ async function saveLeadToSupabase(lead: LeadPayload) {
 async function sendLeadEmail(lead: LeadPayload) {
   if (!isConfigured("RESEND_API_KEY", "LEAD_NOTIFY_EMAIL", "LEAD_FROM_EMAIL")) {
     console.warn("Resend is not configured. Lead was validated but email was not sent.");
-    return;
+    return { ok: false as const, reason: "Resend is not configured." };
   }
 
   const response = await fetch("https://api.resend.com/emails", {
@@ -162,8 +195,11 @@ async function sendLeadEmail(lead: LeadPayload) {
 
   if (!response.ok) {
     const detail = await response.text().catch(() => "");
-    throw new Error(`Resend email failed: ${response.status} ${detail}`);
+    console.warn("Resend email failed", { status: response.status, detail });
+    return { ok: false as const, reason: `Resend email failed: ${response.status}` };
   }
+
+  return { ok: true as const };
 }
 
 export async function POST(request: Request) {
@@ -174,8 +210,9 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json().catch(() => null);
-  const parsed = schema.safeParse(body);
-  const simpleParsed = simpleSchema.safeParse(body);
+  const normalizedBody = normalizeLeadBody(body);
+  const parsed = schema.safeParse(normalizedBody);
+  const simpleParsed = simpleSchema.safeParse(normalizedBody);
   if ((!parsed.success && !simpleParsed.success) || (parsed.success && parsed.data.website) || (simpleParsed.success && simpleParsed.data.website)) {
     return NextResponse.json({ ok: false, error: "Invalid inquiry." }, { status: 400 });
   }
@@ -204,7 +241,10 @@ export async function POST(request: Request) {
 
   try {
     await saveLeadToSupabase(lead);
-    await sendLeadEmail(lead);
+    const emailResult = await sendLeadEmail(lead);
+    if (!emailResult.ok) {
+      console.warn("Aura lead email skipped or failed", emailResult.reason);
+    }
   } catch (error) {
     console.error("Aura lead processing failed", error);
     return NextResponse.json({ ok: false, error: "We could not save this inquiry. Please try again." }, { status: 500 });
