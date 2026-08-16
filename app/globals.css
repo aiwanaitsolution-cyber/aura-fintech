@@ -3598,6 +3598,74 @@ blockquote {
   background: linear-gradient(135deg, var(--deep), var(--primary) 70%, #7d3606);
 }
 
+.media-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(420px, 58vw, 660px);
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  background: #081d3a;
+}
+
+.media-hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.media-hero-image {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.media-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(4, 27, 56, 0.94) 0%, rgba(4, 27, 56, 0.72) 38%, rgba(4, 27, 56, 0.14) 72%, rgba(4, 27, 56, 0.56) 100%),
+    linear-gradient(180deg, rgba(4, 27, 56, 0.16), rgba(4, 27, 56, 0.36));
+}
+
+.media-hero-copy {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 740px);
+  margin: auto 0;
+  padding: clamp(40px, 6vw, 76px) clamp(18px, 5vw, 72px);
+  display: grid;
+  gap: 18px;
+}
+
+.media-hero-copy h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(2.2rem, 4.8vw, 4.6rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.media-hero-copy p {
+  max-width: 640px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+.media-hero .eyebrow {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.media-hero-about .media-hero-copy {
+  max-width: 780px;
+}
+
+.media-hero-contact .media-hero-copy {
+  max-width: 720px;
+}
+
 .page-content {
   padding: clamp(44px, 7vw, 90px) clamp(18px, 5vw, 72px);
 }
@@ -4845,6 +4913,7 @@ td {
   .premium-hero,
   .calculator-card,
   .calculator-preview,
+  .media-hero,
   .service-hero,
   .service-detail-layout,
   .resource-study-hero,
@@ -5096,6 +5165,21 @@ td {
     margin-top: 10px;
   }
 
+  .media-hero {
+    min-height: 520px;
+  }
+
+  .media-hero-copy {
+    width: 100%;
+    padding: clamp(30px, 7vw, 44px) clamp(18px, 5vw, 28px);
+  }
+
+  .media-hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(4, 27, 56, 0.22), rgba(4, 27, 56, 0.62)),
+      linear-gradient(90deg, rgba(4, 27, 56, 0.92) 0%, rgba(4, 27, 56, 0.45) 100%);
+  }
+
   .hero-stats,
   .form-grid,
   .metrics-rail,
@@ -5119,6 +5203,24 @@ td {
   .partner-tier-grid,
   .partner-route-grid {
     grid-template-columns: 1fr;
+  }
+
+  .media-hero {
+    min-height: 500px;
+  }
+
+  .media-hero-copy {
+    align-self: end;
+    gap: 14px;
+    padding: 28px 18px 34px;
+  }
+
+  .media-hero-copy h1 {
+    font-size: clamp(1.95rem, 10vw, 2.7rem);
+  }
+
+  .media-hero-copy p {
+    font-size: 0.98rem;
   }
 
   .service-floating-content {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, BadgeCheck } from "lucide-react";
 import { AssociationLogoMarquee } from "@/components/AssociationLogoMarquee";
 import { services, site } from "@/lib/client-data";
@@ -12,7 +13,17 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main>
-      <section className="page-hero"><span className="eyebrow">About Aura</span><h1>Loan syndication services and financial advisory for ambitious businesses.</h1><p>{site.tagline}</p></section>
+      <section className="page-hero media-hero media-hero-about">
+        <div className="media-hero-media" aria-hidden="true">
+          <Image src="/assets/aboutexhero.png" alt="" fill priority sizes="100vw" className="media-hero-image" />
+          <div className="media-hero-overlay" />
+        </div>
+        <div className="media-hero-copy">
+          <span className="eyebrow">About Aura</span>
+          <h1>Strategic finance, simplified for ambitious businesses.</h1>
+          <p>We help businesses and families move from inquiry to lender-ready clarity.</p>
+        </div>
+      </section>
       <section className="page-content about-experience">
         <video className="about-section-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/aura-loan-syndication.jpeg" aria-hidden="true">
           <source src="/assets/video/aura-consultation-hero.mp4" type="video/mp4" />
