@@ -66,7 +66,7 @@ export function PremiumHero() {
           CA-led loan syndication, structured finance and advisory for businesses, professionals and families.
         </p>
         <div className="hero-badges">
-          {["14+ years founder experience", "Structured finance guidance"].map((badge) => (
+          {["15+ years founder experience", "Structured finance guidance"].map((badge) => (
             <span key={badge}><BadgeCheck size={15} /> {badge}</span>
           ))}
         </div>

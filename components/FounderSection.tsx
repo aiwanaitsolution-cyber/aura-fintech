@@ -19,7 +19,7 @@ export function FounderSection() {
     { label: "Loan syndication", Icon: Handshake }
   ];
   const founderProof = [
-    { value: "14+ years", label: "Banking and financial services exposure", Icon: TrendingUp },
+    { value: "15+ years", label: "Banking and financial services exposure", Icon: TrendingUp },
     { value: "CA-led", label: "Finance discipline with credit assessment thinking", Icon: BadgeCheck },
     { value: "Business first", label: "Structured support for MSMEs, startups and corporates", Icon: Target }
   ];

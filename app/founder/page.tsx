@@ -17,7 +17,7 @@ export default function FounderPage() {
     { title: "Client Advisory", text: "Long-term relationships built on professionalism and clarity.", Icon: Handshake }
   ];
   const founderProof = [
-    { value: "14+ years", label: "Banking and financial services exposure", Icon: TrendingUp },
+    { value: "15+ years", label: "Banking and financial services exposure", Icon: TrendingUp },
     { value: "CA-led", label: "Finance discipline with credit assessment thinking", Icon: BadgeCheck },
     { value: "Business first", label: "Structured support for MSMEs, startups and corporates", Icon: Target }
   ];
@@ -28,7 +28,7 @@ export default function FounderPage() {
         <div>
           <span className="eyebrow">Our Founder</span>
           <h1>{site.founder}</h1>
-          <p>Qualified Chartered Accountant with over 14 years of extensive banking and financial services experience.</p>
+          <p>Qualified Chartered Accountant with over 15 years of extensive banking and financial services experience.</p>
           <Link className="primary-button" href="/apply-now">Book a Financial Discussion</Link>
         </div>
         <div className="founder-hero-image">

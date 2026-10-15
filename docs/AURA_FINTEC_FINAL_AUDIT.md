@@ -16,7 +16,7 @@ Modern fintech visual system, custom dashboard hero, animated mega menus, bento 
 
 - Founder image: `public/assets/ankita-garg.png`
 - Brand/service images: `public/assets/aura-fintec-profile.jpeg` and `public/assets/aura-loan-syndication.jpeg`
-- Founder profile: CA Ankita Garg, Founder of Aura Fintec Services, with 14+ years of banking and financial services experience
+- Founder profile: CA Ankita Garg, Founder of Aura Fintec Services, with 15+ years of banking and financial services experience
 - Phone and WhatsApp: `+91 96500 23854`
 - Email: `aurafintecservices@gmail.com`
 - Consultation timing: by appointment

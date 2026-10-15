@@ -34,13 +34,13 @@ export const site = {
 
 export const clientPlaceholders = {
   stats: [
-    { label: "Years of banking and financial services experience", value: 14, suffix: "+", note: "Founder experience provided by client" },
+    { label: "Years of banking and financial services experience", value: 15, suffix: "+", note: "Founder experience provided by client" },
     { label: "Loan and advisory categories", value: 10, suffix: "+", note: "Based on supplied service profile" },
     { label: "Core finance focus areas", value: 3, suffix: "", note: "Syndication, structured finance and advisory" },
     { label: "Client-first relationship model", value: 1, suffix: "", note: "Personalized advisory and long-term support" }
   ],
   founderBio:
-    "CA Ankita Garg is the Founder of Aura Fintec Services and a qualified Chartered Accountant with over 14 years of extensive banking and financial services experience. She has worked closely with businesses across diverse industries, with deep expertise in corporate banking, structured finance, credit assessment, financial analysis and strategic financial advisory.",
+    "CA Ankita Garg is the Founder of Aura Fintec Services and a qualified Chartered Accountant with over 15 years of extensive banking and financial services experience. She has worked closely with businesses across diverse industries, with deep expertise in corporate banking, structured finance, credit assessment, financial analysis and strategic financial advisory.",
   founderExtended:
     "Her strong banking background enables her to understand the unique financial requirements of businesses and deliver practical, growth-oriented solutions. She specializes in arranging structured finance, facilitating loan syndication and providing strategic financial advisory to MSMEs, startups and corporates, helping them achieve sustainable growth while maintaining financial discipline.",
   founderVision:
